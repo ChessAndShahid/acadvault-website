@@ -1,51 +1,197 @@
-/* ===== Additional Homepage polish ===== */
+/* =======================================================
+   style.css - AcadVault (Tech Blue theme) - FINAL (WIDER)
+   Paste this file into assets/css/style.css (replace)
+   ======================================================= */
 
-/* Navbar focus & accessible hover */
-.nav-link:focus,
-.nav-link:hover {
-  text-decoration: none;
-  color: var(--brand);
-  outline: none;
+/* --------------------------
+   Color variables — Tech Blue
+   -------------------------- */
+:root{
+  --bg: #F8FAFF;
+  --surface: #FFFFFF;
+  --primary: #3C82F6;
+  --primary-600: #0d6efd; /* fallback */
+  --accent: #38BDF8;
+  --muted: #64748B;
+  --text: #0F1724;
+  --footer-bg: #0F172A;
+  --glass: rgba(255,255,255,0.6);
+  --card-shadow: 0 12px 30px rgba(15,23,36,0.06);
+  --radius-lg: 18px;
 }
 
-.navbar .btn {
-  transition: transform .12s ease, box-shadow .12s ease;
+/* --------------------------
+   Dark mode values (data-theme="dark")
+   -------------------------- */
+:root[data-theme='dark']{
+  --bg: #071022;
+  --surface: #081226;
+  --primary: #3C82F6;
+  --accent: #38BDF8;
+  --muted: #94A3B8;
+  --text: #E6EDF3;
+  --footer-bg: #031027;
+  --glass: rgba(255,255,255,0.03);
+  --card-shadow: 0 12px 30px rgba(2,6,23,0.6);
 }
+
+/* --------------------------
+   Base styles
+   -------------------------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0; color:var(--text); background:var(--bg);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+a{color:var(--primary); text-decoration:none}
+a:hover{ text-decoration:underline; }
+
+/* Utility muted class consistent with theme */
+.muted, .text-muted { color: var(--muted) !important; }
+
+/* --------------------------
+   Header / Navbar
+   -------------------------- */
+.header-logo{height:40px}
+.nav-link{color:var(--text)}
+.nav-link.active{font-weight:600}
+.navbar{background:var(--surface)}
+.navbar .btn{transition: transform .12s ease, box-shadow .12s ease}
 .navbar .btn:focus,
 .navbar .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(13,110,253,0.08); }
 
-/* Hero improvements */
-.hero { padding: 56px 0; }
-.hero .lead { max-width: 44rem; }
+/* --------------------------
+   Hero modern
+   -------------------------- */
+/* wider hero container on large screens */
+.hero-modern{ padding:72px 0; background:var(--bg); color:var(--text); }
+.hero-modern .container-sm{ max-width:1300px; padding-left:28px; padding-right:28px; }
+.eyebrow{ letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; font-size:12px; }
+.hero-card{ background:var(--surface); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--card-shadow); display:flex; align-items:center; justify-content:center; min-height:220px; }
+.hero-card-inner{ display:flex; gap:16px; align-items:center; }
+.hero-preview{ width:88px; height:88px; object-fit:contain; border-radius:10px; background:var(--glass); padding:8px; }
+.qr-thumb img{ border-radius:8px; background:#fff; padding:6px; box-shadow:0 8px 18px rgba(15,23,36,0.06); }
+.hero-stats{ display:flex; gap:18px; margin-left:6px; align-items:center; font-size:14px; color:var(--muted); }
+.hero-stats strong{ display:block; font-size:18px; color:var(--text); font-weight:700; }
 
-/* Decorative image responsive sizing */
-.hero img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
-
-/* Card subtle lift */
-.card { transition: transform .18s ease, box-shadow .18s ease; }
+/* --------------------------
+   Sections & Cards
+   -------------------------- */
+/* slightly wider site container */
+.container-sm{ max-width:1200px; margin:0 auto; padding-left:16px; padding-right:16px; }
+.section-title{margin-bottom:20px}
+.card{border:1px solid rgba(15,23,36,0.04); transition: transform .18s ease, box-shadow .18s ease}
 .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(15,23,36,0.06); }
 
-/* Reveal animation (used by JS) */
-.reveal {
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 500ms ease, transform 500ms ease;
-}
-.reveal.revealed {
-  opacity: 1;
-  transform: none;
-}
+/* --------------------------
+   Stats
+   -------------------------- */
+.stat-card{ background:var(--surface); border-radius:12px; box-shadow:var(--card-shadow); }
+.stat-num{ font-size:22px; font-weight:700; color:var(--text); }
+.stat-label{ font-size:13px; color:var(--muted); margin-top:6px; display:block; }
 
-/* CTA banner responsive */
-.bg-light .btn { min-width: 140px; }
+/* --------------------------
+   CTA & Footer
+   -------------------------- */
+.bg-light{ background:var(--bg); }
+footer{ background:var(--footer-bg); color:#fff; padding:18px 0; font-size:14px }
 
-/* Footer small screens */
+/* --------------------------
+   Reveal animation
+   -------------------------- */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms ease, transform 500ms ease; will-change: opacity, transform; }
+.reveal.revealed { opacity: 1; transform: none; }
+
+/* --------------------------
+   Misc helpers
+   -------------------------- */
+.container-sm{ max-width:1200px; margin:0 auto; padding:0 16px; }
+.eyebrow.small { font-size:12px; }
+
+/* --------------------------
+   Responsive tweaks
+   -------------------------- */
+@media (max-width: 1199px){
+  .hero-modern .container-sm{ max-width:100%; padding-left:20px; padding-right:20px; }
+}
+@media (max-width: 991px){
+  .hero-modern{ padding:40px 0 }
+  .hero-card{ margin-top:12px }
+}
 @media (max-width:575px){
-  .hero { padding: 32px 0; }
-  .header-logo { height: 36px; }
+  .header-logo{height:36px}
+  .hero-modern{ padding:28px 0 }
 }
 
-/* Reduced motion preference */
+/* --------------------------
+   Reduced motion preference
+   -------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .card, .navbar .btn, .reveal { transition: none !important; transform: none !important; }
+}
+
+/* =======================================================
+   GLOBAL DARK MODE FIXES — ensure all pages adapt
+   (Paste this at bottom so it overrides defaults)
+   ======================================================= */
+
+/* Page background and text */
+body, main, section {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* Override Bootstrap light backgrounds in dark mode */
+:root[data-theme="dark"] .bg-light {
+  background: var(--surface) !important;
+}
+
+/* Generic containers adapt to theme */
+.container, .container-sm {
+  color: var(--text) !important;
+  background: transparent !important;
+}
+
+/* Cards on all pages */
+.card {
+  background: var(--surface) !important;
+  border-color: rgba(255,255,255,0.06) !important;
+  color: var(--text) !important;
+}
+
+/* Fix text-muted to match theme */
+.text-muted, .muted {
+  color: var(--muted) !important;
+}
+
+/* Fix footer color */
+footer {
+  background: var(--footer-bg) !important;
+  color: var(--text) !important;
+}
+
+/* Fix headings globally */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text) !important;
+}
+
+/* Remove unwanted white boxes inside sections */
+section > div {
+  background: transparent !important;
+}
+
+/* Force paragraph color if inline styles try to force black */
+p {
+  color: var(--text) !important;
+}
+
+/* Ensure images with white backgrounds look ok on dark mode */
+img {
+  max-width:100%;
+  height:auto;
+  display:block;
 }

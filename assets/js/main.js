@@ -1,7 +1,9 @@
-// main.js - helpers: contact form, reveal on scroll, accessible nav focus
+// main.js - AcadVault helpers (contact form, reveal, counters, nav UX, theme)
 document.addEventListener('DOMContentLoaded', ()=>{
 
-  // 1) Contact form (demo behaviour)
+  /* -------------------------
+     1) Contact form (demo)
+     ------------------------- */
   const form = document.getElementById('contactForm');
   if(form){
     form.addEventListener('submit', (e)=>{
@@ -13,43 +15,48 @@ document.addEventListener('DOMContentLoaded', ()=>{
         alert('Please fill all fields.');
         return;
       }
-      // TODO: Hook this to Firebase Function / Email service in Phase 3
+      // Placeholder for backend integration (Firebase Function or Email API)
       alert('Message submitted (demo).');
       form.reset();
     });
   }
 
-  // 2) IntersectionObserver reveal for .reveal elements
+  /* -------------------------
+     2) Reveal on scroll (IntersectionObserver)
+     ------------------------- */
   const reveals = document.querySelectorAll('.reveal');
   if(reveals.length){
-    const obs = new IntersectionObserver((entries, observer)=>{
+    const observer = new IntersectionObserver((entries, obs)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
+          obs.unobserve(entry.target);
         }
       });
     }, {threshold: 0.12});
-    reveals.forEach(el => obs.observe(el));
+    reveals.forEach(el => observer.observe(el));
   }
 
-  // 3) Keyboard-accessible mobile nav: focus trap hint
-  const nav = document.getElementById('navMain') || document.getElementById('nav') || document.getElementById('nav2');
+  /* -------------------------
+     3) Navbar: close mobile menu on link click
+     ------------------------- */
+  const nav = document.getElementById('navMain');
   if(nav){
-    // Ensure navbar toggler has aria-expanded toggled automatically (Bootstrap does this)
-    // Provide visible focus outline for keyboard users (CSS handles it)
-    // Close mobile menu on link click for better UX:
     nav.querySelectorAll('a.nav-link').forEach(a=>{
       a.addEventListener('click', ()=> {
-        const bsCollapse = bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, {toggle:false});
-        if(window.getComputedStyle(document.querySelector('.navbar-toggler')).display !== 'none'){
-          bsCollapse.hide();
+        const bs = bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, {toggle:false});
+        // only hide on small screens (when toggler visible)
+        const toggler = document.querySelector('.navbar-toggler');
+        if(toggler && window.getComputedStyle(toggler).display !== 'none'){
+          bs.hide();
         }
       });
     });
   }
 
-  // 4) Smooth scroll for internal links
+  /* -------------------------
+     4) Smooth scrolling for internal links
+     ------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', (e)=>{
       const href = a.getAttribute('href');
@@ -61,7 +68,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   });
 
-  // 5) Small accessibility: ensure login button is focusable with space/enter
+  /* -------------------------
+     5) Keyboard accessible login button
+     ------------------------- */
   const loginBtn = document.getElementById('loginBtn');
   if(loginBtn){
     loginBtn.addEventListener('keydown', (e)=>{
@@ -69,4 +78,71 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   }
 
-});
+  /* -------------------------
+     6) Counters (animate when in view)
+     ------------------------- */
+  function runCounters(){
+    document.querySelectorAll('.stat-num').forEach(el=>{
+      const target = +el.getAttribute('data-target') || 0;
+      const duration = 1600;
+      let start = 0;
+      if(target === 0){ el.textContent = '0'; return; }
+      const stepTime = Math.max(20, Math.floor(duration / Math.max(1, target)));
+      const inc = Math.ceil(target / (duration / stepTime));
+      const timer = setInterval(()=>{
+        start += inc;
+        if(start >= target){
+          el.textContent = (el.getAttribute('data-target') === "99") ? target + '%' : String(target);
+          clearInterval(timer);
+        } else {
+          el.textContent = String(start);
+        }
+      }, stepTime);
+    });
+  }
+
+  const statCards = document.querySelectorAll('.stat-card');
+  if(statCards.length){
+    const obsStats = new IntersectionObserver((entries, o)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          runCounters();
+          o.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.2});
+    statCards.forEach(card => obsStats.observe(card));
+  }
+
+  /* -------------------------
+     7) Theme toggle + persistence
+     ------------------------- */
+  (function(){
+    const toggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('acadvault-theme');
+    if(saved === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+
+    function applyIcon(){
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      if(toggle) toggle.textContent = isDark ? '☀️' : '🌙';
+    }
+    applyIcon();
+
+    if(toggle){
+      toggle.addEventListener('click', ()=>{
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        if(isDark){
+          root.removeAttribute('data-theme');
+          localStorage.setItem('acadvault-theme', 'light');
+        } else {
+          root.setAttribute('data-theme', 'dark');
+          localStorage.setItem('acadvault-theme', 'dark');
+        }
+        applyIcon();
+      });
+    }
+  })();
+
+}); // DOMContentLoaded end
