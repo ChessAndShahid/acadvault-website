@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>AcadVault — Secure Certificate Verification</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/img/logo.png" alt="AcadVault" class="header-logo me-2" />
+        <span class="fw-semibold">AcadVault</span>
+      </a>
+
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item ms-3">
+            <a class="btn btn-outline-primary btn-sm" href="#" id="loginBtn">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container container-sm">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold">Secure digital certificates — verified with one scan</h1>
+          <p class="lead text-muted">AcadVault stores issued certificates securely and generates tamper-evident QR codes so employers and institutions can verify authenticity instantly.</p>
+
+          <div class="d-flex gap-2">
+            <a href="about.html" class="btn btn-primary btn-lg">How it works</a>
+            <a href="contact.html" class="btn btn-outline-primary btn-lg">Request access</a>
+          </div>
+
+          <ul class="list-unstyled mt-4 text-muted">
+            <li>• Role-based access (Admin / Faculty / Student)</li>
+            <li>• Quick search, preview & downloads</li>
+            <li>• Public QR verification page</li>
+          </ul>
+        </div>
+
+        <div class="col-lg-6 d-none d-lg-block text-center">
+          <img src="assets/img/hero-illustration.png" alt="Illustration" class="img-fluid" style="max-height:320px;">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FEATURES -->
+  <section class="py-5">
+    <div class="container container-sm">
+      <h2 class="section-title text-center">Key features</h2>
+
+      <div class="row g-4 mt-3">
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100 p-3">
+            <div class="mb-2"><strong>Fast Verification</strong></div>
+            <p class="text-muted mb-0">Scan QR → Live check against Firestore → Instant result.</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100 p-3">
+            <div class="mb-2"><strong>Secure Storage</strong></div>
+            <p class="text-muted mb-0">Certificates stored in Firebase Storage with role-protected access.</p>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-4">
+          <div class="card h-100 p-3">
+            <div class="mb-2"><strong>Admin Controls</strong></div>
+            <p class="text-muted mb-0">Admins manage roles, revoke certificates, and audit events.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION BANNER -->
+  <section class="bg-light py-4">
+    <div class="container container-sm d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div>
+        <strong>Ready to digitize certificate workflows?</strong>
+        <div class="text-muted">Start with a pilot in one department and scale effortlessly.</div>
+      </div>
+      <div>
+        <a href="contact.html" class="btn btn-primary">Request Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-4">
+    <div class="container">
+      <p class="mb-1">© 2025 AcadVault — R.D. & S.H. National College</p>
+      <small class="text-muted">Built using Bootstrap + Firebase (Phase 2)</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+:root{
+  --brand:#0d6efd;
+  --muted:#6c757d;
+  --bg:#f8fafc;
+}
+*{box-sizing:border-box}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin:0; color:#212529; background:#fff;
+}
+.header-logo{height:40px}
+.hero{
+  padding:56px 0;
+  background: linear-gradient(180deg, rgba(13,110,253,0.05), rgba(13,110,253,0.01));
+}
+.section-title{margin-bottom:20px}
+.card{border:1px solid rgba(15,23,36,0.06)}
+footer{background:#0f1724;color:#fff;padding:18px 0;font-size:14px}
+.container-sm{max-width:980px}
+@media (max-width:767px){
+  .hero{padding:32px 0}
+}
