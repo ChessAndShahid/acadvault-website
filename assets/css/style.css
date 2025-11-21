@@ -301,3 +301,27 @@ p{
 section > div{
   background:transparent !important;
 }
+
+/* --------------------------
+   Skip-link utility
+   -------------------------- */
+.visually-hidden-focusable{
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.visually-hidden-focusable:focus,
+.visually-hidden-focusable:active{
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 8px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border-radius: 6px;
+  box-shadow: var(--card-shadow);
+  z-index: 1000;
+}

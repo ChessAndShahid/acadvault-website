@@ -79,23 +79,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 
   /* -------------------------
-     6) Counters (animate when in view)
+     6) Counters (animate when in view) - improved
      ------------------------- */
   function runCounters(){
     document.querySelectorAll('.stat-num').forEach(el=>{
-      const target = +el.getAttribute('data-target') || 0;
+      const raw = el.getAttribute('data-target') || '0';
+      const target = Number(raw);
+      const suffix = el.getAttribute('data-suffix') || '';
       const duration = 1600;
+      if(target <= 0){
+        el.textContent = '0' + suffix;
+        return;
+      }
       let start = 0;
-      if(target === 0){ el.textContent = '0'; return; }
       const stepTime = Math.max(20, Math.floor(duration / Math.max(1, target)));
-      const inc = Math.ceil(target / (duration / stepTime));
+      const inc = Math.max(1, Math.ceil(target / (duration / stepTime)));
       const timer = setInterval(()=>{
         start += inc;
         if(start >= target){
-          el.textContent = (el.getAttribute('data-target') === "99") ? target + '%' : String(target);
+          el.textContent = String(target) + suffix;
           clearInterval(timer);
         } else {
-          el.textContent = String(start);
+          el.textContent = String(start) + suffix;
         }
       }, stepTime);
     });
@@ -115,7 +120,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   }
 
   /* -------------------------
-     7) Theme toggle + persistence
+     7) Theme toggle + persistence (accessible)
      ------------------------- */
   (function(){
     const toggle = document.getElementById('themeToggle');
@@ -126,11 +131,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function applyIcon(){
       const isDark = root.getAttribute('data-theme') === 'dark';
-      if(toggle) toggle.textContent = isDark ? '☀️' : '🌙';
+      if(toggle){
+        toggle.textContent = isDark ? '☀️' : '🌙';
+        toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+        toggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+        toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      }
     }
     applyIcon();
 
     if(toggle){
+      // ensure it's a real button
+      toggle.setAttribute('type', 'button');
       toggle.addEventListener('click', ()=>{
         const isDark = root.getAttribute('data-theme') === 'dark';
         if(isDark){
@@ -156,3 +168,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
   })();
 
 }); // DOMContentLoaded end
+
+// --- non-invasive helpers (append at end of file) ---
+(function(){
+  'use strict';
+
+  /* 1) Auto-fill footer year if #siteYear exists */
+  try{
+    const y = document.getElementById('siteYear');
+    if(y) y.textContent = new Date().getFullYear();
+  }catch(e){}
+
+  /* 2) Auto-mark active nav link (safe: only adds active if matched) */
+  try{
+    const navLinks = document.querySelectorAll('a.nav-link');
+    const current = location.pathname.split('/').pop() || 'index.html';
+
+    navLinks.forEach(a=>{
+      const href = a.getAttribute('href') ? a.getAttribute('href').split('/').pop() : '';
+      if(href === current){
+        a.classList.add('active');
+        a.setAttribute('aria-current','page');
+      }
+    });
+  }catch(e){}
+
+})();
