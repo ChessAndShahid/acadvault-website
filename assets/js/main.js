@@ -145,4 +145,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   })();
 
+  /* -------------------------
+     8) Fill current year in footer (small safe enhancement)
+     ------------------------- */
+  (function(){
+    try{
+      const el = document.getElementById('siteYear');
+      if(el) el.textContent = new Date().getFullYear();
+    }catch(e){}
+  })();
+
 }); // DOMContentLoaded end

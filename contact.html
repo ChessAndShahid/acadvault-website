@@ -1,21 +1,30 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact — AcadVault</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="index.html">AcadVault</a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav6">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/img/logo.png" alt="AcadVault logo" class="header-logo me-2" />
+        <span class="fw-semibold">AcadVault</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+              aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div id="nav6" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
@@ -29,43 +38,64 @@
 
   <main class="py-5">
     <div class="container container-sm">
-      <h1>Contact</h1>
-      <p class="text-muted">Questions? Reach out to the project team.</p>
+      <h1 class="mb-4">Contact</h1>
+      <p class="text-muted mb-4">Get in touch for access, demos or partnership inquiries.</p>
 
-      <div class="row">
-        <div class="col-md-7">
-          <form id="contactForm">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <!-- Contact Form -->
+          <form id="contactForm" class="card p-4 reveal" aria-label="Contact form">
             <div class="mb-3">
-              <label class="form-label">Name</label>
-              <input name="name" class="form-control" />
+              <label for="name" class="form-label">Name</label>
+              <input id="name" name="name" class="form-control" required />
             </div>
+
             <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input name="email" type="email" class="form-control" />
+              <label for="email" class="form-label">Email</label>
+              <input id="email" type="email" name="email" class="form-control" required />
             </div>
+
             <div class="mb-3">
-              <label class="form-label">Message</label>
-              <textarea name="message" rows="5" class="form-control"></textarea>
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" rows="6" class="form-control" required></textarea>
             </div>
-            <button class="btn btn-primary" type="submit">Send Message</button>
+
+            <button type="submit" class="btn btn-primary">Send message</button>
           </form>
         </div>
 
-        <div class="col-md-5">
-          <h5>Project Guide</h5>
-          <p class="text-muted mb-1">Prof. Akbar Khan</p>
-          <p class="text-muted">R.D. & S.H. National College</p>
+        <aside class="col-lg-5">
+          <div class="card p-4 reveal">
+            <h3 class="h6">College Address</h3>
+            <address class="text-muted">
+              R.D. &amp; S.H. National College<br />
+              123 College Road<br />
+              City, State, PIN<br />
+            </address>
 
-          <h5 class="mt-4">Address</h5>
-          <p class="text-muted">Mumbai-400050, Maharashtra</p>
-        </div>
+            <h4 class="h6 mt-3">Guide</h4>
+            <p class="text-muted mb-0">Prof. John Guide — Computer Science</p>
+
+            <h4 class="h6 mt-3">Contact</h4>
+            <p class="text-muted mb-0">email@example.edu | +91 99999 99999</p>
+          </div>
+
+          <div class="card mt-3 p-3 reveal">
+            <h4 class="h6">Map</h4>
+            <!-- Replace with embedded map iframe or static image -->
+            <div style="height:180px;background:#e9eef6;display:flex;align-items:center;justify-content:center;color:#7b8896">
+              Map placeholder
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </main>
 
-  <footer class="text-center">
+  <footer class="text-center py-4">
     <div class="container">
-      <p class="mb-0">© 2025 AcadVault</p>
+      <p class="mb-1">© <span id="siteYear">2025</span> R.D. &amp; S.H. National College — AcadVault</p>
+      <small class="text-muted">Built using Bootstrap + Firebase (Phase 2)</small>
     </div>
   </footer>
 
