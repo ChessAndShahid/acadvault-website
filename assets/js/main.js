@@ -2,21 +2,38 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 
   /* -------------------------
-     1) Contact form (demo)
+     1) Contact form (demo) - inline status instead of alert()
      ------------------------- */
   const form = document.getElementById('contactForm');
   if(form){
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
+      const name = (form.name?.value || '').trim();
+      const email = (form.email?.value || '').trim();
+      const message = (form.message?.value || '').trim();
+      const statusEl = document.getElementById('formStatus');
+
       if(!name || !email || !message){
-        alert('Please fill all fields.');
+        // Inline, accessible feedback
+        if(statusEl){
+          statusEl.textContent = 'Please fill all required fields.';
+          statusEl.classList.remove('text-success');
+          statusEl.classList.add('text-danger');
+        } else {
+          alert('Please fill all fields.');
+        }
         return;
       }
+
       // Placeholder for backend integration (Firebase Function or Email API)
-      alert('Message submitted (demo).');
+      if(statusEl){
+        statusEl.textContent = 'Message submitted (demo). Thank you!';
+        statusEl.classList.remove('text-danger');
+        statusEl.classList.add('text-success');
+      } else {
+        // fallback (very rare)
+        alert('Message submitted (demo).');
+      }
       form.reset();
     });
   }
@@ -44,11 +61,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if(nav){
     nav.querySelectorAll('a.nav-link').forEach(a=>{
       a.addEventListener('click', ()=> {
-        const bs = bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, {toggle:false});
-        // only hide on small screens (when toggler visible)
-        const toggler = document.querySelector('.navbar-toggler');
-        if(toggler && window.getComputedStyle(toggler).display !== 'none'){
-          bs.hide();
+        try {
+          const bs = bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, {toggle:false});
+          // only hide on small screens (when toggler visible)
+          const toggler = document.querySelector('.navbar-toggler');
+          if(toggler && window.getComputedStyle(toggler).display !== 'none'){
+            bs.hide();
+          }
+        } catch (e) {
+          // bootstrap not available or other issue — safe fail
         }
       });
     });
@@ -59,7 +80,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
      ------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click', (e)=>{
-      const href = a.getAttribute('href');
+      const href = a.getAttribute('href') || '';
       if(href.length>1){
         e.preventDefault();
         const el = document.querySelector(href);
@@ -173,13 +194,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 (function(){
   'use strict';
 
-  /* 1) Auto-fill footer year if #siteYear exists */
-  try{
-    const y = document.getElementById('siteYear');
-    if(y) y.textContent = new Date().getFullYear();
-  }catch(e){}
-
-  /* 2) Auto-mark active nav link (safe: only adds active if matched) */
+  /* 1) Auto-mark active nav link (safe: only adds active if matched) */
   try{
     const navLinks = document.querySelectorAll('a.nav-link');
     const current = location.pathname.split('/').pop() || 'index.html';
@@ -192,5 +207,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
       }
     });
   }catch(e){}
-
 })();

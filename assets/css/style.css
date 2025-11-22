@@ -325,3 +325,91 @@ section > div{
   box-shadow: var(--card-shadow);
   z-index: 1000;
 }
+
+/* =======================================================
+   DARK MODE — POLISHED NAVBAR + IMPROVED CONTRAST
+   (Drop-in patch for your existing theme)
+   ======================================================= */
+
+/* Better separated surfaces (navbar becomes clearly visible) */
+:root[data-theme='dark']{
+  --bg: #050d1a;          /* deeper background */
+  --surface: #0a1629;     /* slightly lighter surface for contrast */
+  --primary: #3C82F6;
+  --accent: #38BDF8;
+  --muted: #9FB3C8;
+  --text: #E6EDF3;
+  --footer-bg: #04101f;
+  --glass: rgba(255,255,255,0.04);
+  --card-shadow: 0 18px 40px rgba(2,6,23,0.7);
+}
+
+/* NAVBAR: make it pop in dark mode */
+:root[data-theme='dark'] .navbar{
+  background: var(--surface) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* NAV LINKS: clearer visibility + nice accent on hover */
+:root[data-theme='dark'] .nav-link{
+  color: var(--text) !important;
+  opacity: .9;
+  transition: color .2s ease, opacity .2s ease;
+}
+
+:root[data-theme='dark'] .nav-link:hover,
+:root[data-theme='dark'] .nav-link:focus{
+  color: var(--accent) !important;
+  opacity: 1;
+}
+
+/* Active nav link (current page) */
+:root[data-theme='dark'] .nav-link.active{
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+/* Toggler icon — visible in dark mode (white SVG) */
+:root[data-theme='dark'] .navbar-toggler{
+  border-color: rgba(255,255,255,0.08);
+}
+
+:root[data-theme='dark'] .navbar-toggler-icon{
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'>\
+<path stroke='%23E6EDF3' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/>\
+</svg>");
+}
+
+/* NAVBAR BUTTONS (Login / Theme toggle) */
+:root[data-theme='dark'] .navbar .btn{
+  border-color: rgba(255,255,255,0.06);
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .navbar .btn:hover,
+:root[data-theme='dark'] .navbar .btn:focus{
+  color: var(--primary) !important;
+  box-shadow: 0 8px 20px rgba(60,130,246,0.10);
+}
+
+/* Cards: slightly lighter than bg (clean elevation) */
+:root[data-theme='dark'] .card{
+  background: var(--surface) !important;
+  border-color: rgba(255,255,255,0.05) !important;
+}
+
+/* Tech-blue dark footer */
+:root[data-theme='dark'] footer {
+  background: #0a1528 !important;
+  border-top: 1px solid rgba(56,189,248,0.15);
+}
+
+
+/* Navbar brand text fix in dark mode */
+:root[data-theme='dark'] .navbar-brand,
+:root[data-theme='dark'] .navbar-brand span {
+  color: var(--text) !important;
+}

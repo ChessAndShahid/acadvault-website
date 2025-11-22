@@ -109,35 +109,35 @@
         <div class="gallery-grid reveal" id="galleryGrid">
 
           <!-- repeat/replace these thumbnails with your images -->
-          <button class="gallery-thumb" data-index="0" aria-describedby="cap-0">
+          <button class="gallery-thumb" data-index="0" aria-describedby="cap-0" type="button">
             <img src="assets/img/gallery-1.jpg" alt="Students at the annual science exhibition" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="1" aria-describedby="cap-1">
+          <button class="gallery-thumb" data-index="1" aria-describedby="cap-1" type="button">
             <img src="assets/img/gallery-2.jpg" alt="College auditorium during convocation" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="2" aria-describedby="cap-2">
+          <button class="gallery-thumb" data-index="2" aria-describedby="cap-2" type="button">
             <img src="assets/img/gallery-3.jpg" alt="Computer lab session with students coding" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="3" aria-describedby="cap-3">
+          <button class="gallery-thumb" data-index="3" aria-describedby="cap-3" type="button">
             <img src="assets/img/gallery-4.jpg" alt="Sports day — students running a relay race" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="4" aria-describedby="cap-4">
+          <button class="gallery-thumb" data-index="4" aria-describedby="cap-4" type="button">
             <img src="assets/img/gallery-5.jpg" alt="Library interior showing study spaces" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="5" aria-describedby="cap-5">
+          <button class="gallery-thumb" data-index="5" aria-describedby="cap-5" type="button">
             <img src="assets/img/gallery-6.jpg" alt="Faculty interacting in a departmental meeting" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="6" aria-describedby="cap-6">
+          <button class="gallery-thumb" data-index="6" aria-describedby="cap-6" type="button">
             <img src="assets/img/gallery-7.jpg" alt="Workshop: robotics demonstration" loading="lazy" width="600" height="400">
           </button>
 
-          <button class="gallery-thumb" data-index="7" aria-describedby="cap-7">
+          <button class="gallery-thumb" data-index="7" aria-describedby="cap-7" type="button">
             <img src="assets/img/gallery-8.jpg" alt="Campus sunset view with students" loading="lazy" width="600" height="400">
           </button>
 
@@ -204,8 +204,11 @@
       ];
 
       function openAt(index){
+        if(!thumbs[index] || !lbImage || !lightbox) return;
         const img = thumbs[index].querySelector('img');
-        lbImage.src = img.src.replace(/(\.jpg|\.png)$/i, '$1'); // same path
+        if(!img) return;
+        // Use the same src (no-op regex removed)
+        lbImage.src = img.src;
         lbImage.alt = img.alt || '';
         lbCaption.textContent = captions[index] || '';
         current = index;
@@ -214,46 +217,51 @@
       }
 
       function closeLB(){
+        if(!lightbox) return;
         lightbox.classList.remove('open');
-        lbImage.src = '';
-        // return focus to thumbnail
-        thumbs[current].focus();
+        if(lbImage) lbImage.src = '';
+        // return focus to thumbnail (if exists)
+        try { if(thumbs[current]) thumbs[current].focus(); } catch (e) {}
       }
 
       function next(){
+        if(thumbs.length === 0) return;
         current = (current + 1) % thumbs.length;
         openAt(current);
       }
       function prev(){
+        if(thumbs.length === 0) return;
         current = (current - 1 + thumbs.length) % thumbs.length;
         openAt(current);
       }
 
       thumbs.forEach((t, i)=>{
+        // ensure button behaviour
+        t.setAttribute('type','button');
         t.addEventListener('click', ()=> openAt(i));
         t.addEventListener('keydown', (e)=>{
           if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(i); }
         });
-        // make button focusable with visible outline
-        t.setAttribute('type','button');
       });
 
-      lbClose.addEventListener('click', closeLB);
-      lbNext.addEventListener('click', next);
-      lbPrev.addEventListener('click', prev);
+      if(lbClose) lbClose.addEventListener('click', closeLB);
+      if(lbNext) lbNext.addEventListener('click', next);
+      if(lbPrev) lbPrev.addEventListener('click', prev);
 
       // keyboard navigation
       document.addEventListener('keydown', (e)=>{
-        if(!lightbox.classList.contains('open')) return;
+        if(!lightbox || !lightbox.classList.contains('open')) return;
         if(e.key === 'Escape') closeLB();
         if(e.key === 'ArrowRight') next();
         if(e.key === 'ArrowLeft') prev();
       });
 
       // close when clicking backdrop outside inner
-      lightbox.addEventListener('click', (e)=>{
-        if(e.target === lightbox) closeLB();
-      });
+      if(lightbox){
+        lightbox.addEventListener('click', (e)=>{
+          if(e.target === lightbox) closeLB();
+        });
+      }
     })();
   </script>
 

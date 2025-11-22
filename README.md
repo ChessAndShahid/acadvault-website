@@ -1,134 +1,130 @@
+# AcadVault — R.D. & S.H. National College
 
-# AcadVault — Phase 1 (Planning + Setup)
+## 📌 Project Overview
 
-**Project:** AcadVault — Secure Certificate Verification  
-**Owner:** R.D. & S.H. National College (student project)  
-**Phase:** Phase 1 — Planning & Setup (19 Nov – 26 Nov)  
-**Prepared by:** [Your Name]
+AcadVault is a secure, modern, zero-budget digital certificate management system created for **R.D. & S.H. National College**. It allows departments to **store, issue and verify certificates** through tamper‑evident QR codes and role‑based access.
 
----
-
-## Project summary
-AcadVault is a lightweight web front-end to demonstrate issuing, storing and verifying academic certificates using tamper-evident QR codes and role-based access controls. Phase 1 establishes the site structure, design system, and basic client-side interactions so the project can progress to a Firebase-backed prototype in Phase 2.
-
-Key goals for Phase 1:
-- Decide pages and information architecture
-- Produce HTML skeletons for all pages
-- Create a consistent design system (CSS)
-- Implement reusable JS helpers (theme, reveal, counters, nav UX)
-- Add placeholders for images and map embed
-- Produce project documentation for submission
+This project is built as a full‑stack solution (frontend Phase 1 completed; backend begins Phase 2). The aim is to create a lightweight, accessible, responsive website using HTML, CSS, JavaScript and Firebase.
 
 ---
 
-## Tech stack
-- HTML5
-- CSS (custom + Bootstrap 5.3)
-- Vanilla JavaScript (no build step)
-- Static assets (images in `assets/img/`)
-- Optional: Firebase in Phase 2 (not implemented in Phase 1)
+## 📁 Folder Structure
 
----
-
-## Folder structure
-
-
+```
 project-root/
-├─ index.html
-├─ about.html
-├─ courses.html
-├─ faculty.html
-├─ gallery.html
-├─ contact.html
-├─ assets/
-│  ├─ css/
-│  │  └─ style.css
-│  ├─ js/
-│  │  └─ main.js
-│  └─ img/
-│     ├─ logo.png
-│     ├─ qr-placeholder.png
-│     ├─ team-1.jpg ... team-8.jpg
-│     └─ gallery-1.jpg ... gallery-8.jpg
-└─ README.md
+├── index.html
+├── about.html
+├── courses.html
+├── faculty.html
+├── gallery.html
+├── contact.html
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── img/
+│       └── (all images, logo, gallery, faculty photos, QR assets)
+├── README.md
+└── PLANNING.md
+```
 
 ---
 
-## How to run locally
-Open the project folder and:
+## 🚀 Features (Phase 1)
 
-**Option A — Open directly (quick):**
-- Open `index.html` in your browser (double-click).
+### ✔ Complete Frontend Structure
 
-**Option B — Serve via a simple HTTP server (recommended for consistent behavior):**
-- Using Python 3:
-  
-  python -m http.server 8000
-  # then open http://localhost:8000
+* Full multi‑page layout (Home, About, Courses, Faculty, Gallery, Contact)
+* Responsive Bootstrap 5 layout
+* Modern gradient hero section
 
+### ✔ UI Components
 
-* Using Node (http-server):
+* Navbar with theme toggle (light/dark)
+* Hero card with counters and QR preview
+* Feature cards
+* Animated reveal sections
+* Stats counters
+* Gallery with Lightbox (keyboard accessible)
+* Contact form with client‑side validation
+* Footer with dynamic year
 
-  ```bash
-  npx http-server -c-1
-  ```
+### ✔ Dark Mode Enhancements
 
-Notes:
+* Improved contrast across all sections
+* Polished footer color (tech‑blue)
+* Navbar, brand text, toggler icon updated
 
-* `index.html` and other pages reference `assets/js/main.js` and `assets/css/style.css`. Ensure the `assets` folder is adjacent to the HTML files.
-* For the Google Maps iframe to work, you need an internet connection.
+### ✔ Accessibility
 
----
+* Skip link for keyboard users
+* ARIA labels on interactive elements
+* Visible focus indicators
 
-## What’s included (Phase 1 deliverables)
+### ✔ SEO / Metadata
 
-* Fully structured HTML pages:
-
-  * `index.html` — home / hero / features / counters / CTA
-  * `about.html` — mission, values, team preview
-  * `courses.html` — course catalogue scaffolding
-  * `faculty.html` — faculty grid (placeholder photos)
-  * `gallery.html` — responsive gallery + accessible lightbox
-  * `contact.html` — contact form + embedded Google Map
-* Design system:
-
-  * `assets/css/style.css` — theme variables, hero, cards, reveal animations, dark-mode fixes
-* JS helpers:
-
-  * `assets/js/main.js` — contact demo handler, reveal (IntersectionObserver), counters, theme toggle (persisted), mobile nav behaviour, auto-fill copyright year, conservative auto-active nav helper
-* Placeholder images for gallery and faculty (kept in `assets/img/`)
-* SEO / OpenGraph metadata (non-invasive additions in `<head>`)
-* Accessible features: skip links, ARIA roles/labels, keyboard handlers, reduced-motion respect
-* Planning and documentation (this README.md and planning.md)
+* Unique titles and descriptions on each page
+* OpenGraph & Twitter preview cards
+* Theme color meta tag
 
 ---
 
-## Testing checklist (quick)
+## 🧪 How to Run Locally
 
-* [ ] Open `index.html` and verify hero, features and counters
-* [ ] Scroll to trigger reveal animations
-* [ ] Toggle light/dark theme (theme persisted across reload)
-* [ ] Open `gallery.html` and test lightbox (keyboard arrows, Esc, click outside to close)
-* [ ] Submit the demo contact form (client-side alert/validation)
-* [ ] Verify map loads on `contact.html` (internet required)
-* [ ] Check responsive layout on mobile/tablet sizes
+1. Download the entire project folder.
+2. Open the folder in **VS Code**.
+3. Install the Live Server extension (optional).
+4. Right‑click **index.html → Open with Live Server**.
 
----
-
-## Next steps (Phase 2 suggestions)
-
-* Integrate Firebase backend (Authentication, Firestore, Storage, Cloud Functions)
-* Implement certificate issuance flow (signed payload → QR generation)
-* Implement certificate verification endpoint (live lookup + revocation)
-* Replace placeholders with real faculty/gallery photos
-* Add structured data (JSON-LD) and improved Lighthouse perf fixes
+OR simply open `index.html` in any modern browser.
 
 ---
 
-## License & credits
+## 🌐 Deployment Notes
 
-* Project code by project owner (student). Use/modify for educational purposes.
-* Icons / images used in Phase 1 are placeholders; replace with licensed assets before production.
+You can deploy this project easily on:
 
-````
+* **Netlify** (drag‑and‑drop folder)
+* **Vercel** (link GitHub repo)
+* **GitHub Pages**
 
+Make sure all asset paths remain relative (`assets/...`).
+
+---
+
+## 📘 Phase Breakdown
+
+### Phase 1 (Completed)
+
+* Planning website pages
+* Wireframing & layout sketching
+* Creating HTML skeletons
+* Setting up project folder
+* Adding responsive UI
+* Adding dark mode
+* Adding animations
+* Adding contact form + validation
+* Creating documentation (README + planning)
+
+### Phase 2 (Next)
+
+* Firebase backend integration
+* Realtime certificate verification
+* Admin dashboard
+* Uploading certificate PDFs
+* QR generation system
+* Role‑based privileges
+
+---
+
+## 📝 Credits
+
+**Developer:** Syblus (Student Project)
+**Guide:** R.D. & S.H. National College (Dept of Computer Science)
+
+---
+
+## 📄 License
+
+This project is created for educational purposes as part of a college submission. Redistribution is allowed for academic use.
