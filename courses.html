@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Explore academic programs offered at R.D. & S.H. National College — B.Sc, B.Com, Arts, IT, and more.">
-  <!-- Optional small SEO / preview meta (safe non-invasive) -->
   <meta name="theme-color" content="#0F1724" />
   <meta property="og:site_name" content="AcadVault">
   <meta property="og:type" content="website">
@@ -14,26 +13,18 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>Courses — AcadVault</title>
 
-  <!-- Performance: preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Skip link -->
   <a class="visually-hidden-focusable" href="#mainContent">Skip to content</a>
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" role="navigation" aria-label="Primary navigation">
+  <nav class="navbar navbar-expand-lg shadow-sm" role="navigation" aria-label="Primary navigation">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="AcadVault home">
         <img src="assets/img/logo.png" alt="AcadVault logo" class="header-logo me-2" width="40" height="40" />
@@ -64,133 +55,184 @@
     </div>
   </nav>
 
-  <!-- MAIN -->
-  <main id="mainContent" class="py-5">
+  <!-- HERO (index-style top restored) -->
+  <header id="mainContent" class="hero-modern" role="region" aria-labelledby="hero-heading">
     <div class="container container-sm">
+      <div class="row align-items-center g-4">
 
-      <!-- HEADER -->
-      <header class="mb-5">
-        <h1 class="mb-3 reveal">Courses Offered</h1>
-        <p class="text-muted reveal">Explore undergraduate and postgraduate programs offered across Arts, Commerce, Science, and IT departments.</p>
-      </header>
+        <div class="col-lg-6">
+          <div class="eyebrow text-uppercase small text-muted reveal">Courses &amp; Short Programs</div>
+          <h1 id="hero-heading" class="display-5 fw-bold reveal">Courses Offered</h1>
 
-      <!-- COURSE CATEGORIES -->
-      <section class="mb-5">
-        <h2 class="section-title text-center reveal">Departments</h2>
+          <p class="lead text-muted mb-4 reveal">
+            Explore undergraduate and postgraduate programs across Arts, Commerce, Science and IT — 
+            discover syllabi, durations, and how each course links to certificate workflows.
+          </p>
 
-        <div class="row g-3 mt-3 text-center">
-          <div class="col-6 col-md-3 reveal">
-            <div class="card p-3 h-100">
-              <strong>Science</strong>
-              <div class="text-muted small">B.Sc / M.Sc Programs</div>
-            </div>
+          <div class="d-flex gap-2 mb-3 reveal">
+            <a class="btn btn-primary btn-lg" href="#coursesGrid">Browse courses</a>
+            <a class="btn btn-outline-primary btn-lg" href="contact.html">Request curriculum</a>
           </div>
 
-          <div class="col-6 col-md-3 reveal">
-            <div class="card p-3 h-100">
-              <strong>Commerce</strong>
-              <div class="text-muted small">B.Com / BAF / BMS</div>
-            </div>
+          <div class="mt-3 reveal">
+            <small class="text-muted">
+              All courses are available as certificate-backed workshops or semester-long programs.
+            </small>
           </div>
+        </div>
 
-          <div class="col-6 col-md-3 reveal">
-            <div class="card p-3 h-100">
-              <strong>Arts</strong>
-              <div class="text-muted small">BA Programs</div>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-3 reveal">
-            <div class="card p-3 h-100">
-              <strong>IT & CS</strong>
-              <div class="text-muted small">BSc IT / CS</div>
+        <!-- Right card -->
+        <div class="col-lg-6">
+          <div class="hero-card reveal">
+            <div class="hero-card-inner">
+              <img src="assets/img/logo.png" class="hero-preview" width="88" height="88" alt="">
+              <div class="ms-3">
+                <div><strong>12</strong><div class="muted">Programs</div></div>
+                <div class="mt-2"><strong>4</strong><div class="muted">Departments</div></div>
+                <div class="mt-3 small text-muted">Contact academics for scheduling and syllabi.</div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
 
-      <!-- COURSE LISTS -->
-      <section class="mb-5">
-        <h2 class="section-title reveal text-center">Undergraduate Programs</h2>
-
-        <div class="row g-4 mt-2">
-
-          <!-- Course Card -->
-          <div class="col-md-6 reveal">
-            <div class="card p-4 h-100">
-              <h4 class="h5 mb-2">B.Sc Computer Science</h4>
-              <p class="text-muted mb-3">Learn programming, algorithms, data structures, networking, cybersecurity, and modern computing concepts.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="card p-4 h-100">
-              <h4 class="h5 mb-2">B.Sc Information Technology</h4>
-              <p class="text-muted mb-3">Covers software development, databases, cloud, networking and IT project management.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="card p-4 h-100">
-              <h4 class="h5 mb-2">B.Com (General)</h4>
-              <p class="text-muted mb-3">Commerce fundamentals: accounting, taxation, finance, marketing, and business law.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="card p-4 h-100">
-              <h4 class="h5 mb-2">B.A (Arts)</h4>
-              <p class="text-muted mb-3">Programs in Psychology, Sociology, English Literature, History, and more.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- POSTGRADUATE -->
-      <section class="mb-5">
-        <h2 class="section-title reveal text-center">Postgraduate Programs</h2>
-
-        <div class="row g-4 mt-2">
-
-          <div class="col-md-6 reveal">
-            <div class="card p-4 h-100">
-              <h4 class="h5 mb-2">M.Sc Computer Science</h4>
-              <p class="text-muted mb-3">Advanced computing, AI basics, machine learning foundations & research work.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
-            </div>
-          </div>
-
-          <div class="col-md-6 reveal">
-            <div class="card p-4 h-100">
-              <h4 class="h5 mb-2">M.Com</h4>
-              <p class="text-muted mb-3">Specializations in Advanced Accountancy, Business Management, and Banking.</p>
-              <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="reveal">
-        <div class="card p-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-          <div>
-            <strong>Looking for more details?</strong>
-            <div class="text-muted">Get in touch with our academic office to request full curricula and academic calendars.</div>
-          </div>
-          <div>
-            <a href="contact.html" class="btn btn-primary">Contact us</a>
-          </div>
-        </div>
-      </section>
-
+      </div>
     </div>
-  </main>
+  </header>
+
+  <!-- DIVIDER -->
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- RESTORED ORIGINAL COURSE PAGE CONTENT -->
+
+  <!-- Departments -->
+  <section class="mb-5">
+    <div class="container container-sm">
+      <h2 class="section-title text-center reveal">Departments</h2>
+
+      <div id="coursesGrid" class="row g-3 mt-3 text-center reveal--stagger">
+        <div class="col-6 col-md-3 reveal">
+          <div class="card p-3 h-100">
+            <strong>Science</strong>
+            <div class="text-muted small">B.Sc / M.Sc Programs</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 reveal">
+          <div class="card p-3 h-100">
+            <strong>Commerce</strong>
+            <div class="text-muted small">B.Com / BAF / BMS</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 reveal">
+          <div class="card p-3 h-100">
+            <strong>Arts</strong>
+            <div class="text-muted small">BA Programs</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 reveal">
+          <div class="card p-3 h-100">
+            <strong>IT &amp; CS</strong>
+            <div class="text-muted small">BSc IT / CS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Undergraduate -->
+  <section class="mb-5">
+    <div class="container container-sm">
+      <h2 class="section-title reveal text-center">Undergraduate Programs</h2>
+
+      <div class="row g-4 mt-2 reveal--stagger">
+
+        <div class="col-md-6 reveal">
+          <div class="card p-4 h-100">
+            <h4 class="h5 mb-2">B.Sc Computer Science</h4>
+            <p class="text-muted mb-3">
+              Programming, algorithms, networking, cybersecurity & modern computing.
+            </p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 reveal">
+          <div class="card p-4 h-100">
+            <h4 class="h5 mb-2">B.Sc Information Technology</h4>
+            <p class="text-muted mb-3">Software development, databases, cloud & networking.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 reveal">
+          <div class="card p-4 h-100">
+            <h4 class="h5 mb-2">B.Com (General)</h4>
+            <p class="text-muted mb-3">Accounting, taxation, finance, marketing & business law.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 reveal">
+          <div class="card p-4 h-100">
+            <h4 class="h5 mb-2">B.A (Arts)</h4>
+            <p class="text-muted mb-3">Psychology, Sociology, Literature, History & more.</p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- Postgraduate -->
+  <section class="mb-5">
+    <div class="container container-sm">
+      <h2 class="section-title reveal text-center">Postgraduate Programs</h2>
+
+      <div class="row g-4 mt-2 reveal--stagger">
+        <div class="col-md-6 reveal">
+          <div class="card p-4 h-100">
+            <h4 class="h5 mb-2">M.Sc Computer Science</h4>
+            <p class="text-muted mb-3">
+              Advanced computing, AI basics, ML foundations & research.
+            </p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 reveal">
+          <div class="card p-4 h-100">
+            <h4 class="h5 mb-2">M.Com</h4>
+            <p class="text-muted mb-3">
+              Advanced Accountancy, Business Management & Banking.
+            </p>
+            <a href="#" class="btn btn-outline-primary btn-sm">Download syllabus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="reveal">
+    <div class="container container-sm">
+      <div class="card p-4 d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div>
+          <strong>Looking for more details?</strong>
+          <div class="text-muted">
+            Get in touch with our academic office to request full curricula & academic calendars.
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Contact us</a>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="text-center py-4">
@@ -200,17 +242,8 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS bundle (deferred) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
-
-  <!-- Project JS (deferred) -->
   <script src="assets/js/main.js" defer></script>
 
-  <noscript>
-    <style>
-      .reveal { opacity: 1 !important; transform: none !important; }
-    </style>
-    <div class="container text-center py-2 small text-muted">JavaScript is disabled — interactive features may not work.</div>
-  </noscript>
 </body>
 </html>

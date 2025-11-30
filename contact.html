@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Contact R.D. & S.H. National College — AcadVault demo contact form for requests, demos and support." />
-  <!-- Optional small SEO / preview meta (safe non-invasive) -->
   <meta name="theme-color" content="#0F1724" />
   <meta property="og:site_name" content="AcadVault">
   <meta property="og:type" content="website">
@@ -26,6 +25,18 @@
 
   <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Small page-scoped tweaks for contact */
+    .contact-hero { padding: 56px 0 40px; }
+    .contact-hero .hero-card { min-height: 160px; display:flex; align-items:center; justify-content:center; padding:18px; }
+    .contact-hero .hero-preview { width:64px; height:64px; }
+    .help-note { font-size:0.95rem; color:var(--muted); margin-bottom:0.75rem; }
+    /* Slightly narrower form on large screens for visual balance */
+    @media (min-width:992px){
+      .contact-form-wrap { max-width: 760px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -63,47 +74,92 @@
     </div>
   </nav>
 
+  <!-- HERO (Contact) -->
+  <header class="hero-modern contact-hero" role="region" aria-labelledby="contact-hero-heading">
+    <div class="container container-sm">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div class="eyebrow small text-uppercase text-muted reveal">Contact &amp; Support</div>
+          <h1 id="contact-hero-heading" class="display-5 fw-bold reveal">Contact R.D. &amp; S.H. National College — AcadVault</h1>
+          <p class="lead text-muted mb-3 reveal">Questions about pilots, access, or how AcadVault can secure your certificate workflows? Send us a message — we'll reply within 2 business days.</p>
+
+          <p class="help-note reveal">Campus life — inquiries for departments, workshops, or collaboration requests are welcome. Prefer phone? Use the contact details on the right.</p>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-card card p-3 reveal">
+            <div class="hero-card-inner w-100 align-items-center">
+              <img src="assets/img/logo.png" alt="AcadVault preview" class="hero-preview" width="64" height="64" loading="eager" />
+              <div class="ms-3 w-100">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <div class="h5 mb-0">8+</div>
+                    <div class="small text-muted">Featured galleries</div>
+                  </div>
+                  <div style="min-width:130px; text-align:right;">
+                    <div class="small text-muted">Contact</div>
+                    <div class="fw-semibold">email@example.edu</div>
+                    <div class="small text-muted mt-1">+91 99999 99999</div>
+                  </div>
+                </div>
+
+                <!-- REPLACED: removed anchor/button that wasn't responding.
+                     In its place we put a clear static instruction message. -->
+                <div class="mt-3 text-end">
+                  <p class="small text-muted mb-0">Prefer email? Reach us at <a href="mailto:email@example.edu">email@example.edu</a> or use the form below.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
   <!-- CONTACT MAIN -->
   <main id="contactMain" class="py-5">
     <div class="container container-sm">
-      <h1 class="mb-4">Contact</h1>
-      <p class="text-muted mb-4">Get in touch for access, demos or partnership inquiries.</p>
-
       <div class="row g-4">
         <div class="col-lg-7">
-
           <!-- Contact Form -->
-          <form id="contactForm" class="card p-4 reveal needs-validation" novalidate aria-label="Contact form">
-            <div class="mb-3">
-              <label for="name" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
-              <input id="name" name="name" type="text" class="form-control" placeholder="Your full name" required aria-required="true" />
-              <div class="invalid-feedback">Please enter your name.</div>
-            </div>
+          <div class="contact-form-wrap reveal contact-form-wrap">
+            <form id="contactForm" class="card p-4 needs-validation" novalidate aria-label="Contact form">
+              <h2 class="h5 mb-3">Send us a message</h2>
 
-            <div class="mb-3">
-              <label for="email" class="form-label">Email <span class="text-danger" aria-hidden="true">*</span></label>
-              <input id="email" type="email" name="email" class="form-control" placeholder="you@example.com" required aria-required="true" />
-              <div class="invalid-feedback">Please enter a valid email address.</div>
-            </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
+                <input id="name" name="name" type="text" class="form-control" placeholder="Your full name" required aria-required="true" />
+                <div class="invalid-feedback">Please enter your name.</div>
+              </div>
 
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone (optional)</label>
-              <input id="phone" name="phone" type="tel" class="form-control" placeholder="+91 98xxxx xxxx" />
-            </div>
+              <div class="row gx-2">
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email <span class="text-danger" aria-hidden="true">*</span></label>
+                  <input id="email" type="email" name="email" class="form-control" placeholder="you@example.com" required aria-required="true" />
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
 
-            <div class="mb-3">
-              <label for="message" class="form-label">Message <span class="text-danger" aria-hidden="true">*</span></label>
-              <textarea id="message" name="message" rows="6" class="form-control" placeholder="Tell us about your request..." required aria-required="true"></textarea>
-              <div class="invalid-feedback">Please enter a message.</div>
-            </div>
+                <div class="col-md-6 mb-3">
+                  <label for="phone" class="form-label">Phone (optional)</label>
+                  <input id="phone" name="phone" type="tel" class="form-control" placeholder="+91 98xxxx xxxx" />
+                </div>
+              </div>
 
-            <div class="d-flex align-items-center gap-3">
-              <button type="submit" class="btn btn-primary">Send message</button>
-              <button type="reset" class="btn btn-outline-secondary">Reset</button>
-              <div id="formStatus" class="small text-muted" aria-live="polite"></div>
-            </div>
-          </form>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message <span class="text-danger" aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" rows="6" class="form-control" placeholder="Tell us about your request..." required aria-required="true"></textarea>
+                <div class="invalid-feedback">Please enter a message.</div>
+              </div>
 
+              <div class="d-flex align-items-center gap-3">
+                <button type="submit" class="btn btn-primary">Send message</button>
+                <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                <div id="formStatus" class="small text-muted" aria-live="polite"></div>
+              </div>
+            </form>
+          </div>
         </div>
 
         <aside class="col-lg-5">
@@ -125,7 +181,6 @@
           <!-- MAP WITH EMBED -->
           <div class="card mt-3 p-3 reveal">
             <h4 class="h6">Map</h4>
-
             <div style="height:180px;">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.655231341019!2d72.8264406746328!3d19.07252878214637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c90e1eb2f3ff%3A0xf61e3a5ff58cec88!2sR.%20D.%20National%20College%20and%20W.%20A.%20Science%20College!5e0!3m2!1sen!2sin!4v1732204100000!5m2!1sen!2sin"
@@ -135,7 +190,6 @@
                 title="R.D. & S.H. National College Location">
               </iframe>
             </div>
-
           </div>
         </aside>
       </div>
@@ -175,9 +229,9 @@
             event.stopPropagation();
             form.classList.add('was-validated');
           } else {
-            // Let main.js handle the demo submit (it prevents default and shows inline status)
             const status = document.getElementById('formStatus');
             if(status) status.textContent = 'Submitting...';
+            // main.js will still prevent default and show demo success message
           }
         }, false);
       });

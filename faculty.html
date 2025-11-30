@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Meet the faculty of R.D. & S.H. National College — profiles, departments and contact leads." />
-  <!-- Optional small SEO / preview meta (safe non-invasive) -->
   <meta name="theme-color" content="#0F1724" />
   <meta property="og:site_name" content="AcadVault">
   <meta property="og:type" content="website">
@@ -14,26 +13,24 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>Faculty — AcadVault</title>
 
-  <!-- Performance: preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* Page-scoped helpers (kept small) */
+    .faculty-photo { width:96px; height:96px; object-fit:cover; border-radius:50%; box-shadow:0 6px 16px rgba(15,23,36,0.06); display:block; margin:0 auto 10px; }
+    .filters .btn { border-radius: 999px; }
+    .filters .btn[aria-pressed="true"] { box-shadow: 0 6px 20px rgba(60,130,246,0.08); transform: translateY(-2px); }
+  </style>
 </head>
 <body>
 
-  <!-- Skip link -->
   <a class="visually-hidden-focusable" href="#mainContent">Skip to content</a>
 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" role="navigation" aria-label="Primary navigation">
+  <nav class="navbar navbar-expand-lg shadow-sm" role="navigation" aria-label="Primary navigation">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="AcadVault home">
         <img src="assets/img/logo.png" alt="AcadVault logo" class="header-logo me-2" width="40" height="40" />
@@ -63,34 +60,31 @@
     </div>
   </nav>
 
-  <!-- MAIN -->
   <main id="mainContent" class="py-5">
     <div class="container container-sm">
-
-      <!-- Header -->
       <header class="mb-4">
         <h1 class="display-6 mb-2 reveal">Faculty &amp; Staff</h1>
         <p class="text-muted reveal">Our dedicated faculty across departments — click a profile to view details (photos are placeholders).</p>
       </header>
 
-      <!-- Filters (non-js, visual only) -->
-      <div class="mb-4 reveal">
+      <!-- Filters (functional) -->
+      <div class="mb-4 reveal filters" role="toolbar" aria-label="Filter faculty by department">
         <div class="d-flex flex-wrap gap-2">
-          <span class="btn btn-sm btn-outline-secondary active" aria-pressed="true">All</span>
-          <span class="btn btn-sm btn-outline-secondary">Computer Science</span>
-          <span class="btn btn-sm btn-outline-secondary">Commerce</span>
-          <span class="btn btn-sm btn-outline-secondary">Arts</span>
-          <span class="btn btn-sm btn-outline-secondary">Administration</span>
+          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="all" aria-pressed="true">All</button>
+          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="cs" aria-pressed="false">Computer Science</button>
+          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="commerce" aria-pressed="false">Commerce</button>
+          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="arts" aria-pressed="false">Arts</button>
+          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="admin" aria-pressed="false">Administration</button>
         </div>
       </div>
 
       <!-- Faculty grid -->
       <section aria-label="Faculty list">
-        <div class="row g-3">
-          <!-- Faculty card template — duplicate/replace as needed -->
+        <div class="row g-3" id="facultyGrid">
+          <!-- Each column contains .faculty-card with data-dept -->
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" role="article" aria-labelledby="f1-name">
-              <img src="assets/img/team-1.jpg" alt="Prof. A photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f1-name" data-dept="cs">
+              <img src="assets/img/team-1.jpg" alt="Prof. A photo" class="faculty-photo" loading="lazy">
               <h3 id="f1-name" class="h6 fw-semibold mb-0">Prof. A</h3>
               <div class="small text-muted mb-2">Head — Computer Science</div>
               <div class="small text-muted">prof.a@college.edu</div>
@@ -101,8 +95,8 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" role="article" aria-labelledby="f2-name">
-              <img src="assets/img/team-2.jpg" alt="Dr. B photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f2-name" data-dept="admin">
+              <img src="assets/img/team-2.jpg" alt="Dr. B photo" class="faculty-photo" loading="lazy">
               <h3 id="f2-name" class="h6 fw-semibold mb-0">Dr. B</h3>
               <div class="small text-muted mb-2">Registrar</div>
               <div class="small text-muted">dr.b@college.edu</div>
@@ -113,8 +107,8 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" role="article" aria-labelledby="f3-name">
-              <img src="assets/img/team-3.jpg" alt="Ms. C photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f3-name" data-dept="admin">
+              <img src="assets/img/team-3.jpg" alt="Ms. C photo" class="faculty-photo" loading="lazy">
               <h3 id="f3-name" class="h6 fw-semibold mb-0">Ms. C</h3>
               <div class="small text-muted mb-2">System Admin</div>
               <div class="small text-muted">ms.c@college.edu</div>
@@ -125,8 +119,8 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" role="article" aria-labelledby="f4-name">
-              <img src="assets/img/team-4.jpg" alt="Mr. D photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f4-name" data-dept="admin">
+              <img src="assets/img/team-4.jpg" alt="Mr. D photo" class="faculty-photo" loading="lazy">
               <h3 id="f4-name" class="h6 fw-semibold mb-0">Mr. D</h3>
               <div class="small text-muted mb-2">Student Affairs</div>
               <div class="small text-muted">mr.d@college.edu</div>
@@ -136,10 +130,9 @@
             </article>
           </div>
 
-          <!-- Additional sample cards -->
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" aria-labelledby="f5-name">
-              <img src="assets/img/team-5.jpg" alt="Dr. E photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f5-name" data-dept="commerce">
+              <img src="assets/img/team-5.jpg" alt="Dr. E photo" class="faculty-photo" loading="lazy">
               <h3 id="f5-name" class="h6 fw-semibold mb-0">Dr. E</h3>
               <div class="small text-muted mb-2">Professor — Commerce</div>
               <div class="small text-muted">dr.e@college.edu</div>
@@ -148,8 +141,8 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" aria-labelledby="f6-name">
-              <img src="assets/img/team-6.jpg" alt="Prof. F photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f6-name" data-dept="arts">
+              <img src="assets/img/team-6.jpg" alt="Prof. F photo" class="faculty-photo" loading="lazy">
               <h3 id="f6-name" class="h6 fw-semibold mb-0">Prof. F</h3>
               <div class="small text-muted mb-2">Lecturer — Arts</div>
               <div class="small text-muted">prof.f@college.edu</div>
@@ -158,8 +151,8 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" aria-labelledby="f7-name">
-              <img src="assets/img/team-7.jpg" alt="Ms. G photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f7-name" data-dept="cs">
+              <img src="assets/img/team-7.jpg" alt="Ms. G photo" class="faculty-photo" loading="lazy">
               <h3 id="f7-name" class="h6 fw-semibold mb-0">Ms. G</h3>
               <div class="small text-muted mb-2">Assistant — IT</div>
               <div class="small text-muted">ms.g@college.edu</div>
@@ -168,8 +161,8 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100" aria-labelledby="f8-name">
-              <img src="assets/img/team-8.jpg" alt="Mr. H photo" class="rounded-circle mb-2" style="width:96px;height:96px;object-fit:cover;">
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f8-name" data-dept="admin">
+              <img src="assets/img/team-8.jpg" alt="Mr. H photo" class="faculty-photo" loading="lazy">
               <h3 id="f8-name" class="h6 fw-semibold mb-0">Mr. H</h3>
               <div class="small text-muted mb-2">Lab Technician</div>
               <div class="small text-muted">mr.h@college.edu</div>
@@ -187,7 +180,6 @@
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="text-center py-4">
     <div class="container">
       <p class="mb-1">© <span id="siteYear">2025</span> R.D. &amp; S.H. National College — AcadVault</p>
@@ -195,10 +187,7 @@
     </div>
   </footer>
 
-  <!-- Bootstrap JS bundle (deferred) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
-
-  <!-- Project JS (deferred) -->
   <script src="assets/js/main.js" defer></script>
 
   <noscript>
@@ -207,5 +196,6 @@
     </style>
     <div class="container text-center py-2 small text-muted">JavaScript is disabled — interactive features may not work.</div>
   </noscript>
+
 </body>
 </html>
