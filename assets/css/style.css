@@ -577,3 +577,25 @@ main h1 {
   object-fit:cover;
   margin-bottom:10px;
 }
+/* =========================
+   FACULTY PAGE HELPERS
+   ========================= */
+
+.faculty-photo{
+  width:96px;
+  height:96px;
+  object-fit:cover;
+  border-radius:50%;
+  box-shadow:0 6px 16px rgba(15,23,36,0.06);
+  display:block;
+  margin:0 auto 10px;
+}
+
+.filters .btn{
+  border-radius:999px;
+}
+
+.filters .btn[aria-pressed="true"]{
+  box-shadow:0 6px 20px rgba(60,130,246,0.08);
+  transform:translateY(-2px);
+}
