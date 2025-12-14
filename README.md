@@ -1,55 +1,58 @@
 # AcadVault — Secure Academic Certificate Verification System
 
-AcadVault is a web-based academic project designed to **digitally issue, store, and verify academic certificates**
-using **QR-based verification** and **role-based access control**.
+AcadVault is a **web-based academic project** developed to demonstrate a modern, secure approach to
+**issuing, storing, and verifying academic certificates** using **QR-based verification** and
+**role-based access control**.
 
-The system is built as a **lightweight, secure, and evaluator-friendly prototype** for
-R.D. & S.H. National College, demonstrating modern web development practices.
-
----
-
-## 🎯 Project Objectives
-
-- Digitize academic certificate workflows
-- Prevent certificate forgery and tampering
-- Enable instant QR-based verification
-- Maintain role-based access for administrators, faculty, and students
-- Demonstrate accessibility, performance, and security awareness
+The system is designed as a **lightweight, evaluator-friendly prototype** for  
+**R.D. & S.H. National College**, focusing on frontend architecture, usability, accessibility,
+and secure design principles.
 
 ---
 
-## 🧩 Key Features
+## 1. Project Objectives
 
-- 🔐 Secure certificate issuance & storage
-- 📱 QR-code based certificate verification
-- 👥 Role-based access control (Admin / Faculty / Student)
-- ♿ Accessibility-first UI (keyboard & screen-reader friendly)
-- 🌗 Light & Dark mode support
-- 📊 Statistics counters & audit-friendly design
-- 🖼️ Campus gallery with accessible lightbox
-- 📄 Structured academic content pages
+The primary objectives of this project are to:
+
+- Digitize academic certificate issuance and verification workflows
+- Reduce the risk of certificate forgery and unauthorized modification
+- Enable instant QR-based certificate verification
+- Demonstrate role-based access control concepts (Administrator, Faculty, Student)
+- Apply modern web development practices with accessibility and performance in mind
 
 ---
 
-## 🛠️ Tech Stack
+## 2. Key Features
 
-**Frontend**
-- HTML5 (semantic & accessible)
-- CSS3 (custom design system)
-- Bootstrap 5
+- Secure certificate issuance and storage (prototype-ready)
+- QR-code based certificate verification workflow
+- Role-based access control design (Admin / Faculty / Student)
+- Accessibility-first user interface (keyboard and screen-reader friendly)
+- Light and dark theme support
+- Responsive layout for desktop and mobile devices
+- Academic content pages (About, Courses, Faculty, Gallery, Contact)
+- Campus gallery with accessible lightbox design
+
+---
+
+## 3. Technology Stack
+
+### Frontend
+- HTML5 (semantic and accessible markup)
+- CSS3 (custom design system with dark mode support)
+- Bootstrap 5 (responsive layout and components)
 - JavaScript (ES6)
 
-**Backend / Services (Prototype-ready)**
-- Firebase (Authentication, Firestore, Storage)
+### Backend / Services (Prototype Design)
+- Firebase (Authentication, Firestore, Storage — integration-ready)
 
-**Other Tools**
+### Supporting Tools
 - Google Fonts (Inter)
-- Bootstrap Icons
-- Google Maps Embed (no API / billing)
+- Google Maps Embed (no API or billing dependency)
 
 ---
 
-## 📂 Project Structure
+## 4. Project Structure
 
 ```
 AcadVault/
@@ -73,66 +76,72 @@ AcadVault/
 
 ---
 
-## ♿ Accessibility Considerations
+## 5. Accessibility Considerations
 
-- Semantic HTML with proper heading hierarchy
-- Skip-to-content links
-- Keyboard-accessible navigation & forms
-- ARIA used only where required
-- Meaningful `alt` text for all images
-- Accessible modal (gallery lightbox)
+Accessibility was treated as a core requirement throughout development:
+
+- Semantic HTML with consistent heading hierarchy
+- Skip-to-content links for keyboard users
+- Keyboard-accessible navigation, forms, and controls
+- Proper focus indicators and contrast handling
+- ARIA attributes used only where necessary
+- Meaningful alternative text for all images
+- Motion-safe reveal animations with reduced-motion support
 
 ---
 
-## 🚀 Performance Practices
+## 6. Performance Practices
 
 - Deferred JavaScript loading
-- Lazy-loaded images
+- Lazy loading of images
 - Minimal external dependencies
 - No unnecessary third-party scripts
-- Clean console (no runtime errors)
+- Clean console output (no runtime errors)
 
 ---
 
-## 🧪 How to Run Locally
+## 7. How to Run the Project Locally
 
-1. Download or clone the project
-2. Open the folder in VS Code
-3. Open `index.html` in a browser  
-   *(or use Live Server for best results)*
+1. Download or clone the project repository
+2. Open the project folder in VS Code (or any code editor)
+3. Open `index.html` in a modern web browser  
+   *(Optional: use Live Server for better navigation experience)*
 
-No server setup required for frontend demo.
-
----
-
-## 📌 Project Status
-
-- Phase 1: Planning & Setup ✅
-- Phase 2:
-  - Day 1: UI stabilization & dark mode ✅
-  - Day 2: Visual polish & hero improvements ✅
-  - Day 3: Content polishing (all pages) ✅
-  - Day 4: Accessibility, SEO, performance & documentation ✅
+No backend server setup is required for the frontend demonstration.
 
 ---
 
-## 🏫 Academic Note
+## 8. Project Development Status
 
-This project is developed **for educational purposes** as part of a college
-web development / software engineering submission.
+- **Phase 1:** Planning, layout design, file structure, and documentation — Completed  
+- **Phase 2:**  
+  - UI stabilization and dark mode implementation  
+  - Page-wise content development (About, Courses, Faculty, Gallery, Contact)  
+  - Accessibility, performance, and responsiveness audit  
+  - Final documentation and polish  
 
-All data, email IDs, and images are **placeholders** used for demonstration.
+**Project Status:** Completed and submission-ready
 
 ---
 
-## 👤 Author
+## 9. Academic Declaration
 
-**Student Name:** _(Add your name here)_  
+This project has been developed **strictly for educational purposes** as part of a
+college-level web development / software engineering submission.
+
+All email addresses, contact details, images, and data used in this project are
+**placeholders** intended solely for demonstration.
+
+---
+
+## 10. Author Information
+
+**Student Name:** _(Add your name)_  
 **College:** R.D. & S.H. National College  
-**Course:** _(Your course & semester)_  
+**Course / Semester:** _(Add details)_  
 
 ---
 
-## 📜 License
+## 11. License
 
-This project is intended for academic use only.
+This project is intended for **academic use only**.
