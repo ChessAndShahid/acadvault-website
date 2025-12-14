@@ -599,3 +599,35 @@ main h1 {
   box-shadow:0 6px 20px rgba(60,130,246,0.08);
   transform:translateY(-2px);
 }
+/* =========================
+   CONTACT PAGE HELPERS
+   ========================= */
+
+.contact-hero{
+  padding:56px 0 40px;
+}
+
+.contact-hero .hero-card{
+  min-height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+.contact-hero .hero-preview{
+  width:64px;
+  height:64px;
+}
+
+.help-note{
+  font-size:0.95rem;
+  color:var(--muted);
+  margin-bottom:0.75rem;
+}
+
+@media (min-width:992px){
+  .contact-form-wrap{
+    max-width:760px;
+  }
+}
