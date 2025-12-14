@@ -566,3 +566,14 @@ main h1 {
   letter-spacing: -0.3px;
   color: var(--text);
 }
+/* =========================
+   ABOUT PAGE HELPERS (SAFE ADD)
+   ========================= */
+
+.team-avatar{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:10px;
+}

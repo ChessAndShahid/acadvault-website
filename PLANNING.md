@@ -2,150 +2,161 @@
 
 ## 📅 Project: AcadVault — R.D. & S.H. National College
 
-**Frontend Phase 1:** 19 Nov – 26 Nov
-**Student:** Syblus
-**Guide:** Department of Computer Science
+**Phase:** Frontend – Phase 1  
+**Duration:** 19 Nov – 26 Nov  
+**Student:** Syblus  
+**Guide:** Department of Computer Science  
 
 ---
 
-# 1. 🎯 Project Goal (Phase 1)
+## 1. 🎯 Project Goal (Phase 1)
 
-To complete all **planning + frontend setup work** required to begin backend integration in Phase 2. This includes deciding pages, sketching layouts, building structure, adding basic UI, dark mode, animations, and documentation.
+The objective of Phase 1 was to complete all **planning, design, and frontend setup**
+required to safely begin backend integration in Phase 2.
+
+This phase focused on:
+- Page planning and layout decisions
+- UI/UX structure and responsiveness
+- Frontend feature implementation
+- Accessibility, theming, and documentation
 
 ---
 
-# 2. 📦 Deliverables (End of Phase 1)
+## 2. 📦 Phase 1 Deliverables (By 26 Nov)
 
-By 26 Nov, Phase 1 must deliver:
+### ✔ Page Planning
+The following core pages were finalized:
+- Home
+- About
+- Courses
+- Faculty
+- Gallery
+- Contact
 
-### ✔ Page Plan
+---
 
-* Home
-* About
-* Courses
-* Faculty
-* Gallery
-* Contact
+### ✔ Design Preparation
+- Wireframes and layout sketches for all pages
+- Theme and color palette selection
+- Hero section and card-based layout decisions
+- Navigation and footer consistency planning
 
-### ✔ Design Prep
-
-* Wireframes / layout sketches for all pages
-* Decisions on theme, color palette, hero style, card layout
+---
 
 ### ✔ Technical Setup
+- VS Code project environment configured
+- Complete folder structure created
+- All HTML files scaffolded
+- Asset folders created (`css`, `js`, `img`)
+- Base CSS and JavaScript files initialized
 
-* VS Code project structure created
-* All HTML pages scaffolded
-* Assets folders created (`css`, `js`, `img`)
-* Base CSS + JS files created
+---
 
 ### ✔ Core Frontend Development
+Implemented features include:
+- Responsive navigation bar
+- Modern hero section layout
+- Card-based sections and call-to-action blocks
+- Animated statistics counters
+- Scroll reveal animations
+- Light/Dark mode with persistence
+- Contact form with validation
+- Gallery with accessible lightbox
+- Dynamic footer with auto-updating year
 
-* Responsive navbar
-* Modern hero layout
-* Cards, sections, CTA
-* Stats counters
-* Reveal animations
-* Light/dark theme toggle
-* Contact form + validation
-* Gallery with Lightbox
-* Footer with dynamic year
+---
 
 ### ✔ Documentation
-
-* Final README.md
-* This planning.md file
+- `README.md` created
+- `PLANNING.md` (this file) created
 
 ---
 
-# 3. 🧭 Day-by-Day Breakdown
+## 3. 🧭 Day-by-Day Progress Breakdown
 
-## **Day 1–2: Page Decision + Feature Planning**
-
+### **Day 1–2: Page Decision & Feature Planning**
 **Tasks:**
+- Finalized page list
+- Identified required UI components
+- Defined hero layout and statistics usage
+- Planned gallery, contact form, and lightbox
+- Selected design theme and color palette
 
-* Decided the 6 main pages
-* Listed all required components
-* Discussed vision for hero layout and stats
-* Decided to include gallery, contact form, lightbox
-* Chose color palette
-
-**Output:** Complete page list + feature list.
+**Output:**  
+✔ Complete page list and feature blueprint
 
 ---
 
-## **Day 3–4: Sketching + Structure + Initial HTML**
-
+### **Day 3–4: Wireframes & HTML Structure**
 **Tasks:**
+- Created wireframes for all pages
+- Built base `index.html` structure
+- Added hero, navbar, counters, and CTA
+- Scaffolded remaining HTML pages
+- Implemented gallery, faculty, and courses sections
 
-* Created rough wireframes for all pages
-* Built index.html structure
-* Added hero, navbar, counters, CTA
-* Added all other empty HTML files
-* Built gallery structure
-* Built faculty & courses sections
-
-**Output:** Full project HTML skeleton.
+**Output:**  
+✔ Full HTML skeleton for entire project
 
 ---
 
-## **Day 5–6: Polishing + Styling + Dark Mode**
-
+### **Day 5–6: Styling, Polish & Dark Mode**
 **Tasks:**
+- Implemented full CSS styling
+- Completed dark mode across all pages
+- Added animations and hover effects
+- Implemented theme toggle with persistence
+- Added active-page navigation logic
+- Ensured mobile and tablet responsiveness
+- Fixed placeholder assets and QR previews
 
-* Added full CSS (hero, nav, cards, gallery, contact)
-* Dark mode complete with navbar + footer polish
-* Added animations (reveal, hover lift)
-* Added theme toggle + auto-save
-* Added active-page JS
-* Fixed QR preview placeholder
-* Ensured responsive behaviour
-
-**Output:** Fully styled, responsive frontend.
+**Output:**  
+✔ Fully styled, responsive frontend
 
 ---
 
-## **Day 7: Documentation + Cleanup**
-
+### **Day 7: Cleanup & Documentation**
 **Tasks:**
+- Finalized `README.md`
+- Finalized `PLANNING.md`
+- Cleaned CSS and JavaScript
+- Verified accessibility and meta information
+- Prepared project for Phase 2 development
 
-* Created README.md
-* Created planning.md
-* Cleaned CSS, JS
-* Verified accessibility + meta tags
-* Prepared project for Phase 2
-
-**Output:** Phase 1 ready for submission.
-
----
-
-# 4. 📝 Acceptance Criteria (Checklist)
-
-### The phase is considered *complete* when:
-
-* [x] All pages exist and load correctly
-* [x] Navbar + footer consistent
-* [x] Dark mode works across pages
-* [x] Reveal animations work
-* [x] Stats counters work
-* [x] Gallery lightbox works (keyboard + click)
-* [x] Contact form validates input
-* [x] No broken image paths
-* [x] README.md created
-* [x] planning.md created
-* [x] All pages responsive
+**Output:**  
+✔ Phase 1 completed and submission-ready
 
 ---
 
-# 5. 🚀 Ready for Phase 2
+## 4. 📝 Phase 1 Acceptance Criteria
 
-Phase 1 is now fully completed. Phase 2 will include:
+Phase 1 is considered **complete** when all the following conditions are met:
 
-* Firebase integration (Auth, Firestore, Storage)
-* QR generation system
-* Certificate verification logic
-* Admin dashboard
-* Real-time verification
-* Deployment pipeline
+- [x] All pages exist and load correctly  
+- [x] Navbar and footer are consistent across pages  
+- [x] Light/Dark mode functions correctly  
+- [x] Reveal animations operate smoothly  
+- [x] Statistics counters function correctly  
+- [x] Gallery lightbox supports keyboard and mouse interaction  
+- [x] Contact form validates user input  
+- [x] No broken image or asset paths  
+- [x] `README.md` created  
+- [x] `PLANNING.md` created  
+- [x] All pages are responsive  
 
-**Project fully prepared for backend integration.**
+---
+
+## 5. 🚀 Transition to Phase 2
+
+Phase 1 is now **fully completed**.
+
+Phase 2 will focus on backend and system logic, including:
+- Firebase Authentication
+- Firestore database integration
+- Certificate storage using Firebase Storage
+- QR code generation and verification
+- Admin dashboard implementation
+- Real-time verification workflows
+- Deployment and hosting pipeline
+
+**The project is fully prepared for Phase 2 backend integration.**
