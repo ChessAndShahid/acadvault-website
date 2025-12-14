@@ -1,23 +1,65 @@
-# AcadVault — R.D. & S.H. National College
+# AcadVault — Secure Academic Certificate Verification System
 
-## 📌 Project Overview
+AcadVault is a web-based academic project designed to **digitally issue, store, and verify academic certificates**
+using **QR-based verification** and **role-based access control**.
 
-AcadVault is a secure, modern, zero-budget digital certificate management system created for **R.D. & S.H. National College**. It allows departments to **store, issue and verify certificates** through tamper‑evident QR codes and role‑based access.
-
-This project is built as a full‑stack solution (frontend Phase 1 completed; backend begins Phase 2). The aim is to create a lightweight, accessible, responsive website using HTML, CSS, JavaScript and Firebase.
+The system is built as a **lightweight, secure, and evaluator-friendly prototype** for
+R.D. & S.H. National College, demonstrating modern web development practices.
 
 ---
 
-## 📁 Folder Structure
+## 🎯 Project Objectives
+
+- Digitize academic certificate workflows
+- Prevent certificate forgery and tampering
+- Enable instant QR-based verification
+- Maintain role-based access for administrators, faculty, and students
+- Demonstrate accessibility, performance, and security awareness
+
+---
+
+## 🧩 Key Features
+
+- 🔐 Secure certificate issuance & storage
+- 📱 QR-code based certificate verification
+- 👥 Role-based access control (Admin / Faculty / Student)
+- ♿ Accessibility-first UI (keyboard & screen-reader friendly)
+- 🌗 Light & Dark mode support
+- 📊 Statistics counters & audit-friendly design
+- 🖼️ Campus gallery with accessible lightbox
+- 📄 Structured academic content pages
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- HTML5 (semantic & accessible)
+- CSS3 (custom design system)
+- Bootstrap 5
+- JavaScript (ES6)
+
+**Backend / Services (Prototype-ready)**
+- Firebase (Authentication, Firestore, Storage)
+
+**Other Tools**
+- Google Fonts (Inter)
+- Bootstrap Icons
+- Google Maps Embed (no API / billing)
+
+---
+
+## 📂 Project Structure
 
 ```
-project-root/
-├── index.html
-├── about.html
-├── courses.html
-├── faculty.html
-├── gallery.html
-├── contact.html
+AcadVault/
+│
+├── index.html # Homepage
+├── about.html # About & mission
+├── courses.html # Academic programs
+├── faculty.html # Faculty & staff
+├── gallery.html # Campus gallery
+├── contact.html # Contact & support
 ├── assets/
 │   ├── css/
 │   │   └── style.css
@@ -31,100 +73,66 @@ project-root/
 
 ---
 
-## 🚀 Features (Phase 1)
+## ♿ Accessibility Considerations
 
-### ✔ Complete Frontend Structure
+- Semantic HTML with proper heading hierarchy
+- Skip-to-content links
+- Keyboard-accessible navigation & forms
+- ARIA used only where required
+- Meaningful `alt` text for all images
+- Accessible modal (gallery lightbox)
 
-* Full multi‑page layout (Home, About, Courses, Faculty, Gallery, Contact)
-* Responsive Bootstrap 5 layout
-* Modern gradient hero section
+---
 
-### ✔ UI Components
+## 🚀 Performance Practices
 
-* Navbar with theme toggle (light/dark)
-* Hero card with counters and QR preview
-* Feature cards
-* Animated reveal sections
-* Stats counters
-* Gallery with Lightbox (keyboard accessible)
-* Contact form with client‑side validation
-* Footer with dynamic year
-
-### ✔ Dark Mode Enhancements
-
-* Improved contrast across all sections
-* Polished footer color (tech‑blue)
-* Navbar, brand text, toggler icon updated
-
-### ✔ Accessibility
-
-* Skip link for keyboard users
-* ARIA labels on interactive elements
-* Visible focus indicators
-
-### ✔ SEO / Metadata
-
-* Unique titles and descriptions on each page
-* OpenGraph & Twitter preview cards
-* Theme color meta tag
+- Deferred JavaScript loading
+- Lazy-loaded images
+- Minimal external dependencies
+- No unnecessary third-party scripts
+- Clean console (no runtime errors)
 
 ---
 
 ## 🧪 How to Run Locally
 
-1. Download the entire project folder.
-2. Open the folder in **VS Code**.
-3. Install the Live Server extension (optional).
-4. Right‑click **index.html → Open with Live Server**.
+1. Download or clone the project
+2. Open the folder in VS Code
+3. Open `index.html` in a browser  
+   *(or use Live Server for best results)*
 
-OR simply open `index.html` in any modern browser.
-
----
-
-## 🌐 Deployment Notes
-
-You can deploy this project easily on:
-
-* **Netlify** (drag‑and‑drop folder)
-* **Vercel** (link GitHub repo)
-* **GitHub Pages**
-
-Make sure all asset paths remain relative (`assets/...`).
+No server setup required for frontend demo.
 
 ---
 
-## 📘 Phase Breakdown
+## 📌 Project Status
 
-### Phase 1 (Completed)
-
-* Planning website pages
-* Wireframing & layout sketching
-* Creating HTML skeletons
-* Setting up project folder
-* Adding responsive UI
-* Adding dark mode
-* Adding animations
-* Adding contact form + validation
-* Creating documentation (README + planning)
-
-### Phase 2 (Next)
-
-* Firebase backend integration
-* Realtime certificate verification
-* Admin dashboard
-* Uploading certificate PDFs
-* QR generation system
-* Role‑based privileges
+- Phase 1: Planning & Setup ✅
+- Phase 2:
+  - Day 1: UI stabilization & dark mode ✅
+  - Day 2: Visual polish & hero improvements ✅
+  - Day 3: Content polishing (all pages) ✅
+  - Day 4: Accessibility, SEO, performance & documentation ✅
 
 ---
 
-## 📝 Credits
+## 🏫 Academic Note
 
-**Developer:** Syblus (Student Project)
-**Guide:** R.D. & S.H. National College (Dept of Computer Science)
+This project is developed **for educational purposes** as part of a college
+web development / software engineering submission.
+
+All data, email IDs, and images are **placeholders** used for demonstration.
 
 ---
 
-## 📄 License
+## 👤 Author
 
-This project is created for educational purposes as part of a college submission. Redistribution is allowed for academic use.
+**Student Name:** _(Add your name here)_  
+**College:** R.D. & S.H. National College  
+**Course:** _(Your course & semester)_  
+
+---
+
+## 📜 License
+
+This project is intended for academic use only.
