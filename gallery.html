@@ -3,32 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Gallery — photos from R.D. & S.H. National College campus, events and labs." />
+  <meta name="description" content="Gallery — moments from campus life, academic events, laboratories, and student activities at R.D. & S.H. National College." />
   <meta name="theme-color" content="#0F1724" />
   <meta property="og:site_name" content="AcadVault">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AcadVault — Secure Certificate Verification">
-  <meta property="og:description" content="Securely issue and verify college certificates with tamper-evident QR codes and role-based controls.">
+  <meta property="og:title" content="Gallery — AcadVault">
+  <meta property="og:description" content="Explore campus life, events, and academic activities at R.D. & S.H. National College.">
   <meta property="og:image" content="assets/img/logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Gallery — AcadVault</title>
 
-  <!-- Performance: preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Page-scoped hero tweaks (you can merge into style.css if preferred) -->
   <style>
-    /* Gallery hero block (clean, card on the right) */
     .gallery-hero {
       padding: 68px 0 42px;
       background: radial-gradient(600px 260px at 86% 28%, rgba(60,130,246,0.03), transparent 18%),
@@ -39,7 +31,6 @@
     .gallery-hero h1 { font-size: clamp(28px, 4vw, 48px); line-height:1.05; margin-bottom:8px; }
     .gallery-hero p.lead { max-width:68ch; color:var(--muted); font-size:1.05rem; }
 
-    /* Right preview card */
     .gallery-preview-card {
       background: var(--card-bg);
       border-radius: 14px;
@@ -55,35 +46,29 @@
       width:56px; height:56px; display:flex; align-items:center; justify-content:center;
       border-radius:10px; background:var(--glass); padding:6px;
     }
-    .gallery-preview-card .logo-wrap img{ width:100%; height:100%; object-fit:contain; display:block; }
+    .gallery-preview-card .logo-wrap img{ width:100%; height:100%; object-fit:contain; }
 
     .gallery-preview-card .stat {
       font-weight:700; font-size:18px; color:var(--text);
     }
     .gallery-preview-card .meta { color:var(--muted); font-size:14px; margin-top:4px; }
-
-    /* small divider line style */
     .gallery-preview-card .sep { display:block; height:2px; width:24px; background:rgba(0,0,0,0.06); margin:8px 0; border-radius:2px; }
 
-    /* smaller screens: stack */
     @media (max-width:991px){
       .gallery-hero { padding:38px 0 18px; }
       .gallery-preview-card{ margin-top:18px; }
     }
 
-    /* subtle text hint under hero (keyboard hint) */
     .gallery-hint {
       color:var(--muted);
       margin-top:22px;
       font-size:0.95rem;
       display:block;
     }
-
   </style>
 </head>
 <body>
 
-  <!-- Skip link -->
   <a class="visually-hidden-focusable" href="#galleryContent">Skip to gallery</a>
 
   <!-- NAVBAR -->
@@ -109,41 +94,44 @@
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 
           <li class="nav-item ms-2 d-flex align-items-center">
-            <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle theme" title="Toggle light/dark" type="button" aria-pressed="false">🌙</button>
-            <a id="loginBtn" class="btn btn-outline-primary btn-sm" href="#" role="button">Login</a>
+            <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle theme" type="button">🌙</button>
+            <a id="loginBtn" class="btn btn-outline-primary btn-sm" href="#">Login</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- GALLERY HERO (polished) -->
+  <!-- HERO -->
   <header class="gallery-hero">
     <div class="container">
       <div class="row align-items-center g-4">
-        <!-- left: eyebrow + title + description -->
         <div class="col-lg-7">
           <div class="eyebrow reveal">Campus life — R.D. &amp; S.H. National College</div>
           <h1 class="reveal">Campus Gallery</h1>
-          <p class="lead reveal">Photos from campus events, labs, classrooms and student life. Click any thumbnail to open the viewer.</p>
+          <p class="lead reveal">
+            A visual glimpse into campus life, academic activities, laboratories,
+            cultural events, and student experiences.
+          </p>
 
           <div class="reveal">
-            <span class="gallery-hint">Use keyboard arrows ↔ or click to navigate. Press ESC to close.</span>
+            <span class="gallery-hint">
+              Click on any image to view it in full size. Use arrow keys to navigate and ESC to close.
+            </span>
           </div>
         </div>
 
-        <!-- right: small preview card -->
         <div class="col-lg-5 d-flex justify-content-lg-end">
-          <div class="gallery-preview-card reveal" aria-hidden="false">
-            <div class="logo-wrap" aria-hidden="true">
-              <img src="assets/img/logo.png" alt="AcadVault preview">
+          <div class="gallery-preview-card reveal">
+            <div class="logo-wrap">
+              <img src="assets/img/logo.png" alt="AcadVault logo preview">
             </div>
 
             <div class="flex-grow-1">
               <div class="stat">8+</div>
-              <div class="meta">Featured galleries</div>
-              <span class="sep" aria-hidden="true"></span>
-              <div class="meta">Memories from campus</div>
+              <div class="meta">Campus galleries</div>
+              <span class="sep"></span>
+              <div class="meta">Academic &amp; student life moments</div>
             </div>
           </div>
         </div>
@@ -157,37 +145,36 @@
       <section aria-label="Photo gallery">
         <div class="gallery-grid reveal" id="galleryGrid">
 
-          <!-- thumbnails (keep your existing pictures) -->
           <button class="gallery-thumb" data-index="0" aria-describedby="cap-0" type="button">
-            <img src="assets/img/gallery-1.jpg" alt="Students at the annual science exhibition" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-1.jpg" alt="Students participating in the annual science exhibition" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="1" aria-describedby="cap-1" type="button">
-            <img src="assets/img/gallery-2.jpg" alt="College auditorium during convocation" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-2.jpg" alt="College auditorium during the annual convocation ceremony" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="2" aria-describedby="cap-2" type="button">
-            <img src="assets/img/gallery-3.jpg" alt="Computer lab session with students coding" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-3.jpg" alt="Students working in the computer laboratory" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="3" aria-describedby="cap-3" type="button">
-            <img src="assets/img/gallery-4.jpg" alt="Sports day — students running a relay race" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-4.jpg" alt="Annual sports day relay race" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="4" aria-describedby="cap-4" type="button">
-            <img src="assets/img/gallery-5.jpg" alt="Library interior showing study spaces" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-5.jpg" alt="College library and student study spaces" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="5" aria-describedby="cap-5" type="button">
-            <img src="assets/img/gallery-6.jpg" alt="Faculty interacting in a departmental meeting" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-6.jpg" alt="Faculty members in a departmental meeting" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="6" aria-describedby="cap-6" type="button">
-            <img src="assets/img/gallery-7.jpg" alt="Workshop: robotics demonstration" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-7.jpg" alt="Robotics workshop and technical demonstration" loading="lazy">
           </button>
 
           <button class="gallery-thumb" data-index="7" aria-describedby="cap-7" type="button">
-            <img src="assets/img/gallery-8.jpg" alt="Campus sunset view with students" loading="lazy" width="600" height="400">
+            <img src="assets/img/gallery-8.jpg" alt="Evening campus view with students" loading="lazy">
           </button>
 
         </div>
@@ -195,124 +182,16 @@
     </div>
   </main>
 
-  <!-- LIGHTBOX (unchanged) -->
-  <div class="lb-backdrop" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" tabindex="-1">
-    <div class="lb-inner">
-      <button class="lb-close" id="lbClose" aria-label="Close (Esc)">✕</button>
-      <button class="lb-prev" id="lbPrev" aria-label="Previous image" title="Previous (←)">◀</button>
-      <button class="lb-next" id="lbNext" aria-label="Next image" title="Next (→)">▶</button>
-      <img src="" alt="" class="lb-img" id="lbImage" />
-      <div class="lb-caption" id="lbCaption"></div>
-      <span id="cap-0" class="sr-only-vis">Students at the annual science exhibition</span>
-      <span id="cap-1" class="sr-only-vis">College auditorium during convocation</span>
-      <span id="cap-2" class="sr-only-vis">Computer lab session with students coding</span>
-      <span id="cap-3" class="sr-only-vis">Sports day — students running a relay race</span>
-      <span id="cap-4" class="sr-only-vis">Library interior showing study spaces</span>
-      <span id="cap-5" class="sr-only-vis">Faculty interacting in a departmental meeting</span>
-      <span id="cap-6" class="sr-only-vis">Workshop: robotics demonstration</span>
-      <span id="cap-7" class="sr-only-vis">Campus sunset view with students</span>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="text-center py-4">
     <div class="container">
       <p class="mb-1">© <span id="siteYear">2025</span> R.D. &amp; S.H. National College — AcadVault</p>
-      <small class="text-muted">Built using Bootstrap + Firebase (Phase 2)</small>
+      <small class="text-muted">Secure Academic Verification Platform (Phase 2)</small>
     </div>
   </footer>
 
-  <!-- Bootstrap JS bundle (deferred) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
-
-  <!-- Project JS (deferred) -->
   <script src="assets/js/main.js" defer></script>
 
-  <!-- Lightbox script (keeps behaviour on this page self-contained) -->
-  <script>
-    (function(){
-      const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
-      const lightbox = document.getElementById('lightbox');
-      const lbImage = document.getElementById('lbImage');
-      const lbCaption = document.getElementById('lbCaption');
-      const lbClose = document.getElementById('lbClose');
-      const lbPrev = document.getElementById('lbPrev');
-      const lbNext = document.getElementById('lbNext');
-      let current = 0;
-
-      const captions = [
-        "Students at the annual science exhibition",
-        "College auditorium during convocation",
-        "Computer lab session with students coding",
-        "Sports day — students running a relay race",
-        "Library interior showing study spaces",
-        "Faculty interacting in a departmental meeting",
-        "Workshop: robotics demonstration",
-        "Campus sunset view with students"
-      ];
-
-      function openAt(index){
-        if(!thumbs[index] || !lbImage || !lightbox) return;
-        const img = thumbs[index].querySelector('img');
-        if(!img) return;
-        lbImage.src = img.src;
-        lbImage.alt = img.alt || '';
-        lbCaption.textContent = captions[index] || '';
-        current = index;
-        lightbox.classList.add('open');
-        lightbox.focus();
-      }
-
-      function closeLB(){
-        if(!lightbox) return;
-        lightbox.classList.remove('open');
-        if(lbImage) lbImage.src = '';
-        try { if(thumbs[current]) thumbs[current].focus(); } catch (e) {}
-      }
-
-      function next(){
-        if(thumbs.length === 0) return;
-        current = (current + 1) % thumbs.length;
-        openAt(current);
-      }
-      function prev(){
-        if(thumbs.length === 0) return;
-        current = (current - 1 + thumbs.length) % thumbs.length;
-        openAt(current);
-      }
-
-      thumbs.forEach((t, i)=>{
-        t.setAttribute('type','button');
-        t.addEventListener('click', ()=> openAt(i));
-        t.addEventListener('keydown', (e)=>{
-          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openAt(i); }
-        });
-      });
-
-      if(lbClose) lbClose.addEventListener('click', closeLB);
-      if(lbNext) lbNext.addEventListener('click', next);
-      if(lbPrev) lbPrev.addEventListener('click', prev);
-
-      document.addEventListener('keydown', (e)=>{
-        if(!lightbox || !lightbox.classList.contains('open')) return;
-        if(e.key === 'Escape') closeLB();
-        if(e.key === 'ArrowRight') next();
-        if(e.key === 'ArrowLeft') prev();
-      });
-
-      if(lightbox){
-        lightbox.addEventListener('click', (e)=>{
-          if(e.target === lightbox) closeLB();
-        });
-      }
-    })();
-  </script>
-
-  <noscript>
-    <style>
-      .reveal { opacity: 1 !important; transform: none !important; }
-    </style>
-    <div class="container text-center py-2 small text-muted">JavaScript is disabled — gallery lightbox will not function.</div>
-  </noscript>
 </body>
 </html>

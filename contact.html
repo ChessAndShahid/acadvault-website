@@ -3,36 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Contact R.D. & S.H. National College — AcadVault demo contact form for requests, demos and support." />
+  <meta name="description" content="Contact R.D. & S.H. National College — reach out for AcadVault demos, academic inquiries, support, or collaboration." />
   <meta name="theme-color" content="#0F1724" />
   <meta property="og:site_name" content="AcadVault">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AcadVault — Secure Certificate Verification">
-  <meta property="og:description" content="Securely issue and verify college certificates with tamper-evident QR codes and role-based controls.">
+  <meta property="og:title" content="Contact — AcadVault">
+  <meta property="og:description" content="Get in touch with R.D. & S.H. National College for AcadVault support, demos, and academic inquiries.">
   <meta property="og:image" content="assets/img/logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Contact — AcadVault</title>
 
-  <!-- Performance: preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
-    /* Small page-scoped tweaks for contact */
     .contact-hero { padding: 56px 0 40px; }
     .contact-hero .hero-card { min-height: 160px; display:flex; align-items:center; justify-content:center; padding:18px; }
     .contact-hero .hero-preview { width:64px; height:64px; }
     .help-note { font-size:0.95rem; color:var(--muted); margin-bottom:0.75rem; }
-    /* Slightly narrower form on large screens for visual balance */
     @media (min-width:992px){
       .contact-form-wrap { max-width: 760px; }
     }
@@ -40,7 +32,6 @@
 </head>
 <body>
 
-  <!-- Skip link -->
   <a class="visually-hidden-focusable" href="#contactMain">Skip to contact form</a>
 
   <!-- NAVBAR -->
@@ -66,7 +57,7 @@
           <li class="nav-item"><a class="nav-link active" href="contact.html" aria-current="page">Contact</a></li>
 
           <li class="nav-item ms-2 d-flex align-items-center">
-            <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle theme" title="Toggle light/dark" type="button" aria-pressed="false">🌙</button>
+            <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle theme" type="button">🌙</button>
             <a id="loginBtn" class="btn btn-outline-primary btn-sm" href="#" role="button">Login</a>
           </li>
         </ul>
@@ -74,39 +65,47 @@
     </div>
   </nav>
 
-  <!-- HERO (Contact) -->
+  <!-- HERO -->
   <header class="hero-modern contact-hero" role="region" aria-labelledby="contact-hero-heading">
     <div class="container container-sm">
       <div class="row align-items-center g-4">
         <div class="col-lg-7">
           <div class="eyebrow small text-uppercase text-muted reveal">Contact &amp; Support</div>
-          <h1 id="contact-hero-heading" class="display-5 fw-bold reveal">Contact R.D. &amp; S.H. National College — AcadVault</h1>
-          <p class="lead text-muted mb-3 reveal">Questions about pilots, access, or how AcadVault can secure your certificate workflows? Send us a message — we'll reply within 2 business days.</p>
+          <h1 id="contact-hero-heading" class="display-5 fw-bold reveal">
+            Contact R.D. &amp; S.H. National College
+          </h1>
+          <p class="lead text-muted mb-3 reveal">
+            Have questions about AcadVault, certificate verification, pilot deployments,
+            or academic collaboration? Send us a message and our team will respond shortly.
+          </p>
 
-          <p class="help-note reveal">Campus life — inquiries for departments, workshops, or collaboration requests are welcome. Prefer phone? Use the contact details on the right.</p>
+          <p class="help-note reveal">
+            For departmental inquiries, workshops, or institutional collaboration,
+            please include relevant details in your message.
+          </p>
         </div>
 
         <div class="col-lg-5">
           <div class="hero-card card p-3 reveal">
             <div class="hero-card-inner w-100 align-items-center">
-              <img src="assets/img/logo.png" alt="AcadVault preview" class="hero-preview" width="64" height="64" loading="eager" />
+              <img src="assets/img/logo.png" alt="AcadVault preview" class="hero-preview" width="64" height="64" />
               <div class="ms-3 w-100">
                 <div class="d-flex justify-content-between align-items-start">
                   <div>
-                    <div class="h5 mb-0">8+</div>
-                    <div class="small text-muted">Featured galleries</div>
+                    <div class="h5 mb-0">Contact</div>
+                    <div class="small text-muted">Academic &amp; technical support</div>
                   </div>
                   <div style="min-width:130px; text-align:right;">
-                    <div class="small text-muted">Contact</div>
                     <div class="fw-semibold">email@example.edu</div>
                     <div class="small text-muted mt-1">+91 99999 99999</div>
                   </div>
                 </div>
 
-                <!-- REPLACED: removed anchor/button that wasn't responding.
-                     In its place we put a clear static instruction message. -->
                 <div class="mt-3 text-end">
-                  <p class="small text-muted mb-0">Prefer email? Reach us at <a href="mailto:email@example.edu">email@example.edu</a> or use the form below.</p>
+                  <p class="small text-muted mb-0">
+                    Prefer email? Write to <a href="mailto:email@example.edu">email@example.edu</a>
+                    or use the contact form below.
+                  </p>
                 </div>
 
               </div>
@@ -118,39 +117,40 @@
     </div>
   </header>
 
-  <!-- CONTACT MAIN -->
+  <!-- MAIN -->
   <main id="contactMain" class="py-5">
     <div class="container container-sm">
       <div class="row g-4">
+
         <div class="col-lg-7">
-          <!-- Contact Form -->
-          <div class="contact-form-wrap reveal contact-form-wrap">
+          <div class="contact-form-wrap reveal">
             <form id="contactForm" class="card p-4 needs-validation" novalidate aria-label="Contact form">
               <h2 class="h5 mb-3">Send us a message</h2>
 
               <div class="mb-3">
-                <label for="name" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
-                <input id="name" name="name" type="text" class="form-control" placeholder="Your full name" required aria-required="true" />
+                <label for="name" class="form-label">Full name <span class="text-danger">*</span></label>
+                <input id="name" name="name" type="text" class="form-control" placeholder="Your full name" required />
                 <div class="invalid-feedback">Please enter your name.</div>
               </div>
 
               <div class="row gx-2">
                 <div class="col-md-6 mb-3">
-                  <label for="email" class="form-label">Email <span class="text-danger" aria-hidden="true">*</span></label>
-                  <input id="email" type="email" name="email" class="form-control" placeholder="you@example.com" required aria-required="true" />
+                  <label for="email" class="form-label">Email address <span class="text-danger">*</span></label>
+                  <input id="email" type="email" name="email" class="form-control" placeholder="you@example.com" required />
                   <div class="invalid-feedback">Please enter a valid email address.</div>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                  <label for="phone" class="form-label">Phone (optional)</label>
+                  <label for="phone" class="form-label">Phone number (optional)</label>
                   <input id="phone" name="phone" type="tel" class="form-control" placeholder="+91 98xxxx xxxx" />
                 </div>
               </div>
 
               <div class="mb-3">
-                <label for="message" class="form-label">Message <span class="text-danger" aria-hidden="true">*</span></label>
-                <textarea id="message" name="message" rows="6" class="form-control" placeholder="Tell us about your request..." required aria-required="true"></textarea>
-                <div class="invalid-feedback">Please enter a message.</div>
+                <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                <textarea id="message" name="message" rows="6" class="form-control"
+                  placeholder="Please describe your inquiry or request in detail..." required></textarea>
+                <div class="invalid-feedback">Please enter your message.</div>
               </div>
 
               <div class="d-flex align-items-center gap-3">
@@ -168,30 +168,34 @@
             <address class="text-muted mb-3">
               R.D. &amp; S.H. National College<br />
               123 College Road<br />
-              City, State, PIN<br />
+              City, State, PIN
             </address>
 
-            <h4 class="h6 mt-2">Guide</h4>
+            <h4 class="h6 mt-2">Faculty Coordinator</h4>
             <p class="text-muted mb-0">Prof. John Guide — Computer Science</p>
 
-            <h4 class="h6 mt-3">Contact</h4>
+            <h4 class="h6 mt-3">Contact Details</h4>
             <p class="text-muted mb-0">email@example.edu | +91 99999 99999</p>
           </div>
 
-          <!-- MAP WITH EMBED -->
           <div class="card mt-3 p-3 reveal">
-            <h4 class="h6">Map</h4>
+            <h4 class="h6">Campus Location</h4>
             <div style="height:180px;">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.655231341019!2d72.8264406746328!3d19.07252878214637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c90e1eb2f3ff%3A0xf61e3a5ff58cec88!2sR.%20D.%20National%20College%20and%20W.%20A.%20Science%20College!5e0!3m2!1sen!2sin!4v1732204100000!5m2!1sen!2sin"
-                width="100%" height="180" style="border:0;border-radius:8px;"
-                allowfullscreen="" loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="R.D. & S.H. National College Location">
-              </iframe>
+  src="https://www.google.com/maps?q=R.D.%20National%20College%20Mumbai&output=embed"
+  width="100%"
+  height="180"
+  style="border:0;border-radius:8px;"
+  allowfullscreen
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+  title="R.D. & S.H. National College Location">
+</iframe>
+
             </div>
           </div>
         </aside>
+
       </div>
     </div>
   </main>
@@ -200,42 +204,12 @@
   <footer class="text-center py-4">
     <div class="container">
       <p class="mb-1">© <span id="siteYear">2025</span> R.D. &amp; S.H. National College — AcadVault</p>
-      <small class="text-muted">Built using Bootstrap + Firebase (Phase 2)</small>
+      <small class="text-muted">Secure Academic Verification Platform (Phase 2)</small>
     </div>
   </footer>
 
-  <!-- Bootstrap JS bundle (deferred) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
-
-  <!-- Project JS (deferred) -->
   <script src="assets/js/main.js" defer></script>
 
-  <noscript>
-    <style>
-      .reveal { opacity: 1 !important; transform: none !important; }
-    </style>
-    <div class="container text-center py-2 small text-muted">JavaScript is disabled — interactive features may not work.</div>
-  </noscript>
-
-  <!-- Small client validation helper (works with your main.js) -->
-  <script>
-    (function(){
-      'use strict';
-      const forms = document.querySelectorAll('.needs-validation');
-      Array.prototype.slice.call(forms).forEach(function(form){
-        form.addEventListener('submit', function(event){
-          if(!form.checkValidity()){
-            event.preventDefault();
-            event.stopPropagation();
-            form.classList.add('was-validated');
-          } else {
-            const status = document.getElementById('formStatus');
-            if(status) status.textContent = 'Submitting...';
-            // main.js will still prevent default and show demo success message
-          }
-        }, false);
-      });
-    })();
-  </script>
 </body>
 </html>

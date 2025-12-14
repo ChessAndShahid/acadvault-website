@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Meet the faculty of R.D. & S.H. National College — profiles, departments and contact leads." />
+  <meta name="description" content="Meet the faculty and administrative staff of R.D. & S.H. National College — academic leadership, departments, and contact information." />
   <meta name="theme-color" content="#0F1724" />
   <meta property="og:site_name" content="AcadVault">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AcadVault — Secure Certificate Verification">
-  <meta property="og:description" content="Securely issue and verify college certificates with tamper-evident QR codes and role-based controls.">
+  <meta property="og:title" content="Faculty — AcadVault">
+  <meta property="og:description" content="Explore faculty profiles and academic leadership at R.D. & S.H. National College.">
   <meta property="og:image" content="assets/img/logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>Faculty — AcadVault</title>
@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
-    /* Page-scoped helpers (kept small) */
     .faculty-photo { width:96px; height:96px; object-fit:cover; border-radius:50%; box-shadow:0 6px 16px rgba(15,23,36,0.06); display:block; margin:0 auto 10px; }
     .filters .btn { border-radius: 999px; }
     .filters .btn[aria-pressed="true"] { box-shadow: 0 6px 20px rgba(60,130,246,0.08); transform: translateY(-2px); }
@@ -52,7 +51,7 @@
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 
           <li class="nav-item ms-2 d-flex align-items-center">
-            <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle theme" title="Toggle light/dark" type="button" aria-pressed="false">🌙</button>
+            <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2" aria-label="Toggle theme" type="button">🌙</button>
             <a id="loginBtn" class="btn btn-outline-primary btn-sm" href="#" role="button">Login</a>
           </li>
         </ul>
@@ -62,15 +61,19 @@
 
   <main id="mainContent" class="py-5">
     <div class="container container-sm">
+
       <header class="mb-4">
-        <h1 class="display-6 mb-2 reveal">Faculty &amp; Staff</h1>
-        <p class="text-muted reveal">Our dedicated faculty across departments — click a profile to view details (photos are placeholders).</p>
+        <h1 class="display-6 mb-2 reveal">Faculty &amp; Academic Staff</h1>
+        <p class="text-muted reveal">
+          Meet our experienced faculty members and administrative staff who support teaching,
+          research, and academic operations across departments.
+        </p>
       </header>
 
-      <!-- Filters (functional) -->
+      <!-- Filters -->
       <div class="mb-4 reveal filters" role="toolbar" aria-label="Filter faculty by department">
         <div class="d-flex flex-wrap gap-2">
-          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="all" aria-pressed="true">All</button>
+          <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="all" aria-pressed="true">All Departments</button>
           <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="cs" aria-pressed="false">Computer Science</button>
           <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="commerce" aria-pressed="false">Commerce</button>
           <button class="btn btn-sm btn-outline-secondary filter-btn" data-filter="arts" aria-pressed="false">Arts</button>
@@ -81,59 +84,51 @@
       <!-- Faculty grid -->
       <section aria-label="Faculty list">
         <div class="row g-3" id="facultyGrid">
-          <!-- Each column contains .faculty-card with data-dept -->
+
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f1-name" data-dept="cs">
-              <img src="assets/img/team-1.jpg" alt="Prof. A photo" class="faculty-photo" loading="lazy">
-              <h3 id="f1-name" class="h6 fw-semibold mb-0">Prof. A</h3>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="cs">
+              <img src="assets/img/team-1.jpg" alt="Head of Computer Science" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Prof. A</h3>
               <div class="small text-muted mb-2">Head — Computer Science</div>
               <div class="small text-muted">prof.a@college.edu</div>
-              <div class="mt-2">
-                <a href="mailto:prof.a@college.edu" class="btn btn-outline-primary btn-sm">Email</a>
-              </div>
+              <div class="mt-2"><a href="mailto:prof.a@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
             </article>
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f2-name" data-dept="admin">
-              <img src="assets/img/team-2.jpg" alt="Dr. B photo" class="faculty-photo" loading="lazy">
-              <h3 id="f2-name" class="h6 fw-semibold mb-0">Dr. B</h3>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="admin">
+              <img src="assets/img/team-2.jpg" alt="Registrar" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Dr. B</h3>
               <div class="small text-muted mb-2">Registrar</div>
               <div class="small text-muted">dr.b@college.edu</div>
-              <div class="mt-2">
-                <a href="mailto:dr.b@college.edu" class="btn btn-outline-primary btn-sm">Email</a>
-              </div>
+              <div class="mt-2"><a href="mailto:dr.b@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
             </article>
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f3-name" data-dept="admin">
-              <img src="assets/img/team-3.jpg" alt="Ms. C photo" class="faculty-photo" loading="lazy">
-              <h3 id="f3-name" class="h6 fw-semibold mb-0">Ms. C</h3>
-              <div class="small text-muted mb-2">System Admin</div>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="admin">
+              <img src="assets/img/team-3.jpg" alt="System Administrator" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Ms. C</h3>
+              <div class="small text-muted mb-2">System Administrator</div>
               <div class="small text-muted">ms.c@college.edu</div>
-              <div class="mt-2">
-                <a href="mailto:ms.c@college.edu" class="btn btn-outline-primary btn-sm">Email</a>
-              </div>
+              <div class="mt-2"><a href="mailto:ms.c@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
             </article>
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f4-name" data-dept="admin">
-              <img src="assets/img/team-4.jpg" alt="Mr. D photo" class="faculty-photo" loading="lazy">
-              <h3 id="f4-name" class="h6 fw-semibold mb-0">Mr. D</h3>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="admin">
+              <img src="assets/img/team-4.jpg" alt="Student Affairs Coordinator" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Mr. D</h3>
               <div class="small text-muted mb-2">Student Affairs</div>
               <div class="small text-muted">mr.d@college.edu</div>
-              <div class="mt-2">
-                <a href="mailto:mr.d@college.edu" class="btn btn-outline-primary btn-sm">Email</a>
-              </div>
+              <div class="mt-2"><a href="mailto:mr.d@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
             </article>
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f5-name" data-dept="commerce">
-              <img src="assets/img/team-5.jpg" alt="Dr. E photo" class="faculty-photo" loading="lazy">
-              <h3 id="f5-name" class="h6 fw-semibold mb-0">Dr. E</h3>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="commerce">
+              <img src="assets/img/team-5.jpg" alt="Professor of Commerce" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Dr. E</h3>
               <div class="small text-muted mb-2">Professor — Commerce</div>
               <div class="small text-muted">dr.e@college.edu</div>
               <div class="mt-2"><a href="mailto:dr.e@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
@@ -141,9 +136,9 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f6-name" data-dept="arts">
-              <img src="assets/img/team-6.jpg" alt="Prof. F photo" class="faculty-photo" loading="lazy">
-              <h3 id="f6-name" class="h6 fw-semibold mb-0">Prof. F</h3>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="arts">
+              <img src="assets/img/team-6.jpg" alt="Lecturer in Arts" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Prof. F</h3>
               <div class="small text-muted mb-2">Lecturer — Arts</div>
               <div class="small text-muted">prof.f@college.edu</div>
               <div class="mt-2"><a href="mailto:prof.f@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
@@ -151,20 +146,20 @@
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f7-name" data-dept="cs">
-              <img src="assets/img/team-7.jpg" alt="Ms. G photo" class="faculty-photo" loading="lazy">
-              <h3 id="f7-name" class="h6 fw-semibold mb-0">Ms. G</h3>
-              <div class="small text-muted mb-2">Assistant — IT</div>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="cs">
+              <img src="assets/img/team-7.jpg" alt="IT Faculty Member" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Ms. G</h3>
+              <div class="small text-muted mb-2">Assistant — Information Technology</div>
               <div class="small text-muted">ms.g@college.edu</div>
               <div class="mt-2"><a href="mailto:ms.g@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
             </article>
           </div>
 
           <div class="col-6 col-md-3 reveal">
-            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" role="article" aria-labelledby="f8-name" data-dept="admin">
-              <img src="assets/img/team-8.jpg" alt="Mr. H photo" class="faculty-photo" loading="lazy">
-              <h3 id="f8-name" class="h6 fw-semibold mb-0">Mr. H</h3>
-              <div class="small text-muted mb-2">Lab Technician</div>
+            <article class="card p-3 text-center h-100 faculty-card faculty-card-visible" data-dept="admin">
+              <img src="assets/img/team-8.jpg" alt="Laboratory Technician" class="faculty-photo">
+              <h3 class="h6 fw-semibold mb-0">Mr. H</h3>
+              <div class="small text-muted mb-2">Laboratory Technician</div>
               <div class="small text-muted">mr.h@college.edu</div>
               <div class="mt-2"><a href="mailto:mr.h@college.edu" class="btn btn-outline-primary btn-sm">Email</a></div>
             </article>
@@ -183,7 +178,7 @@
   <footer class="text-center py-4">
     <div class="container">
       <p class="mb-1">© <span id="siteYear">2025</span> R.D. &amp; S.H. National College — AcadVault</p>
-      <small class="text-muted">Built using Bootstrap + Firebase (Phase 2)</small>
+      <small class="text-muted">Secure Academic Verification Platform (Phase 2)</small>
     </div>
   </footer>
 
@@ -191,10 +186,10 @@
   <script src="assets/js/main.js" defer></script>
 
   <noscript>
-    <style>
-      .reveal { opacity: 1 !important; transform: none !important; }
-    </style>
-    <div class="container text-center py-2 small text-muted">JavaScript is disabled — interactive features may not work.</div>
+    <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    <div class="container text-center py-2 small text-muted">
+      JavaScript is disabled — interactive features may not work.
+    </div>
   </noscript>
 
 </body>
