@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verify Certificate — AcadVault</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="assets/img/logo.png">
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Verify Certificate</h2>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <input type="text" id="verifyId" class="form-control mb-3" placeholder="Enter Certificate ID">
+        <button id="verifyBtn" class="btn btn-success w-100">
+          Verify Certificate
+        </button>
+      </div>
+    </div>
+
+    <div id="verificationResult" class="mt-4 text-center"></div>
+  </div>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPhxMv51PyNsOwImpmz5H0CFeoNHfFoYY",
+    authDomain: "acadvault-backend.firebaseapp.com",
+    projectId: "acadvault-backend",
+    storageBucket: "acadvault-backend.firebasestorage.app",
+    messagingSenderId: "216830101670",
+    appId: "1:216830101670:web:1c921497490fd47560cc67"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const verifyBtn = document.getElementById("verifyBtn");
+  const resultDiv = document.getElementById("verificationResult");
+  const inputField = document.getElementById("verifyId");
+
+  // 🔍 Common verify function
+  async function verifyCertificate(id) {
+    const docRef = doc(db, "certificates", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+
+      resultDiv.innerHTML = `
+        <div class="card shadow-sm p-3">
+          <h5 class="text-success">Valid Certificate ✅</h5>
+          <p><strong>Name:</strong> ${data.studentName}</p>
+          <p><strong>Course:</strong> ${data.course}</p>
+          <p><strong>Year:</strong> ${data.year}</p>
+        </div>
+      `;
+    } else {
+      resultDiv.innerHTML = `
+        <p class="text-danger fw-bold">
+          Invalid Certificate ❌
+        </p>
+      `;
+    }
+  }
+
+  // 🖱 Manual Button Click
+  verifyBtn.addEventListener("click", async () => {
+    const id = inputField.value.trim();
+
+    if (!id) {
+      resultDiv.innerHTML = "<p class='text-danger'>Please enter a Certificate ID.</p>";
+      return;
+    }
+
+    verifyCertificate(id);
+  });
+
+  // 📱 Auto verify if URL has ?id=
+  const urlParams = new URLSearchParams(window.location.search);
+  const certIdFromUrl = urlParams.get("id");
+
+ if (certIdFromUrl) {
+  inputField.value = certIdFromUrl;
+
+  // Hide manual input section when opened via QR
+  document.querySelector(".row").style.display = "none";
+
+  verifyCertificate(certIdFromUrl);
+}
+</script>
+
+</body>
+</html>

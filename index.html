@@ -40,6 +40,7 @@
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="verify.html">Verify</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
@@ -75,6 +76,8 @@
           <div class="d-flex gap-2 mb-3">
             <a class="btn btn-primary btn-lg" href="about.html">How it works</a>
             <a class="btn btn-outline-primary btn-lg" href="contact.html">Request access</a>
+            
+
           </div>
 
           <div class="mt-3">
@@ -171,12 +174,50 @@
         </div>
       </div>
     </div>
-  </section>
+  </section>  <!-- End of STATS -->
+  <!-- ISSUE CERTIFICATE FORM -->
+<section class="py-5">
+  <div class="container container-sm">
+    <h2 class="text-center mb-4">Issue Certificate</h2>
 
-  <div class="section-divider" aria-hidden="true"></div>
+    <form id="certificateForm" class="row g-3">
+      <div class="col-md-4">
+        <input type="text" id="studentName" class="form-control" placeholder="Student Name" required>
+      </div>
 
-  <!-- CTA -->
-  <section class="bg-light py-4 reveal">
+      <div class="col-md-4">
+        <input type="text" id="course" class="form-control" placeholder="Course" required>
+      </div>
+
+      <div class="col-md-4">
+        <input type="text" id="year" class="form-control" placeholder="Year" required>
+      </div>
+
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary">
+          Issue Certificate
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+
+<!-- LIVE CERTIFICATES -->
+<section class="py-5 bg-light">
+  <div class="container container-sm">
+    <h2 class="text-center mb-4">Live Certificates</h2>
+    <div id="certificatesContainer" class="row g-4">
+      <!-- Certificates will appear here dynamically -->
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" aria-hidden="true"></div>
+
+<!-- CTA -->
+<section class="bg-light py-4 reveal">
+
     <div class="container container-sm d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
       <div>
         <strong>Ready to digitize academic certificate workflows?</strong>
@@ -211,6 +252,242 @@
       JavaScript is disabled — interactive features may not work.
     </div>
   </noscript>
+
+  <!-- LOGIN MODAL -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Admin Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <input type="email" id="loginEmail" class="form-control" placeholder="Email" required>
+          </div>
+
+          <div class="mb-3">
+            <input type="password" id="loginPassword" class="form-control" placeholder="Password" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<!-- 🔥 Firebase Firestore Setup -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+
+import { 
+  getFirestore, 
+  collection, 
+  addDoc, 
+  getDocs,
+  deleteDoc,
+  doc,
+  serverTimestamp,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+}  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPhxMv51PyNsOwImpmz5H0CFeoNHfFoYY",
+    authDomain: "acadvault-backend.firebaseapp.com",
+    projectId: "acadvault-backend",
+    storageBucket: "acadvault-backend.firebasestorage.app",
+    messagingSenderId: "216830101670",
+    appId: "1:216830101670:web:1c921497490fd47560cc67"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+  
+
+const loginBtn = document.getElementById("loginBtn");
+const form = document.getElementById("certificateForm");
+const formSection = form.closest("section");
+
+loginBtn.style.visibility = "hidden";   // 👈 ADD THIS LINE
+formSection.style.display = "none";
+
+// LOGIN BUTTON CLICK
+
+
+const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+const loginForm = document.getElementById("loginForm");
+
+loginBtn.addEventListener("click", async () => {
+  const user = auth.currentUser;
+
+  if (user) {
+    await signOut(auth);
+    alert("Logged out successfully!");
+  } else {
+    loginModal.show();
+  }
+});
+
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  if (email !== "admin@acadvault.com") {
+    alert("Access denied. Only authorized admin allowed.");
+    return;
+  }
+
+  try {
+    // 🔐 Set persistence BEFORE signing in
+
+    await signInWithEmailAndPassword(auth, email, password);
+
+    loginModal.hide();
+    loginForm.reset();
+  } catch (error) {
+    alert("Login failed: " + error.message);
+  }
+});
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    formSection.style.display = "block";
+    loginBtn.textContent = "Logout";
+  } else {
+    formSection.style.display = "none";
+    loginBtn.textContent = "Login";
+  }
+
+  fetchCertificates(); // 🔥 Force re-render
+  loginBtn.style.visibility = "visible"; // 👈 ADD THIS LINE
+});
+
+  const container = document.getElementById("certificatesContainer");
+  
+
+  // ISSUE CERTIFICATE
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const studentName = document.getElementById("studentName").value;
+    const course = document.getElementById("course").value;
+    const year = document.getElementById("year").value;
+
+    const docRef = await addDoc(collection(db, "certificates"), {
+  studentName,
+  course,
+  year,
+  status: "valid",
+  issuedAt: serverTimestamp()
+});
+
+    alert("Certificate Issued!\nCertificate ID: " + docRef.id);
+
+    form.reset();
+    fetchCertificates();
+    
+  });
+
+  // FETCH + DISPLAY
+ async function fetchCertificates() {
+  container.innerHTML = "";
+
+  const querySnapshot = await getDocs(collection(db, "certificates"));
+
+  querySnapshot.forEach((docItem) => {
+  const data = docItem.data();
+  const verifyUrl = `${window.location.origin}/verify.html?id=${docItem.id}`;
+
+  // 🔥 ADD THIS BLOCK HERE
+  let formattedDate = "N/A";
+
+  if (data.issuedAt && data.issuedAt.seconds) {
+    const date = new Date(data.issuedAt.seconds * 1000);
+    formattedDate = date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric"
+    });
+  }
+
+  // Then your card template starts
+  const card = `
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">${data.studentName}</h5>
+            <p><strong>Course:</strong> ${data.course}</p>
+<p><strong>Year:</strong> ${data.year}</p>
+<p><strong>Issued On:</strong> ${formattedDate}</p>
+            <p>
+  <strong>Status:</strong> 
+  ${
+    data.status === "valid"
+      ? '<span class="badge bg-success">VALID</span>'
+      : '<span class="badge bg-danger">REVOKED</span>'
+  }
+</p>
+            <p class="small text-muted">
+              <strong>ID:</strong> ${docItem.id}
+            </p>
+
+            <canvas id="qr-${docItem.id}" class="mt-2"></canvas>
+
+            ${
+              auth.currentUser
+                ? `<button class="btn btn-warning btn-sm mt-2 revoke-btn" data-id="${docItem.id}">
+  Revoke
+</button>`
+                : ""
+            }
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.insertAdjacentHTML("beforeend", card);
+
+    const canvas = document.getElementById(`qr-${docItem.id}`);
+    if (canvas) {
+      QRCode.toCanvas(canvas, verifyUrl, { width: 100 });
+    }
+  });
+}
+container.addEventListener("click", async (e) => {
+  if (e.target.classList.contains("revoke-btn")) {
+    const id = e.target.getAttribute("data-id");
+
+    if (confirm("Are you sure you want to revoke this certificate?")) {
+      await updateDoc(doc(db, "certificates", id), {
+        status: "revoked"
+      });
+
+      fetchCertificates();
+    }
+  }
+});
+  
+
+  fetchCertificates();
+</script>
+
 
 </body>
 </html>
