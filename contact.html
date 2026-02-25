@@ -40,11 +40,12 @@
     <div class="collapse navbar-collapse" id="navMain">
       <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-        <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
-        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-        <li class="nav-item"><a class="nav-link active" href="contact.html" aria-current="page">Contact</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+<li class="nav-item"><a class="nav-link" href="verify.html">Verify</a></li>
+<li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
+<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 
         <li class="nav-item ms-2 d-flex align-items-center">
           <button id="themeToggle" class="btn btn-sm btn-outline-secondary me-2"
@@ -69,7 +70,7 @@
         </h1>
 
         <p class="lead text-muted reveal">
-          Have questions about AcadVault, certificate verification, pilot deployments,
+          Have questions about AcadVault, certificate verification, department-level implementation,
           or academic collaboration? Send us a message and our team will respond shortly.
         </p>
 
@@ -86,18 +87,19 @@
             <div class="ms-3 w-100">
               <div class="d-flex justify-content-between align-items-start">
                 <div>
-                  <div class="h5 mb-0">Contact</div>
-                  <div class="small text-muted">Academic &amp; technical support</div>
+                  <div class="h5 mb-0">Academic & Technical Support</div>
+                  <div class="small text-muted">Computer Science Department</div>
                 </div>
                 <div class="text-end">
-                  <div class="fw-semibold">email@example.edu</div>
-                  <div class="small text-muted mt-1">+91 99999 99999</div>
+                  <div class="fw-semibold">cs.department@rdnational.edu</div>
+                  <div class="small text-muted mt-1">+91 22 2648 3594</div>
                 </div>
               </div>
 
               <p class="small text-muted mt-3 mb-0 text-end">
                 Prefer email? Write to
-                <a href="mailto:email@example.edu">email@example.edu</a>
+                <a href="mailto:cs.department@rdnational.edu">cs.department@rdnational.edu
+                </a>
               </p>
             </div>
           </div>
@@ -159,15 +161,15 @@
           <h3 class="h6">College Address</h3>
           <address class="text-muted mb-3">
             R.D. &amp; S.H. National College<br />
-            123 College Road<br />
-            City, State, PIN
+            Linking Road, Bandra (West)<br />
+            Mumbai, Maharashtra 400050
           </address>
 
           <h4 class="h6">Faculty Coordinator</h4>
           <p class="text-muted mb-0">Prof. John Guide — Computer Science</p>
 
           <h4 class="h6 mt-3">Contact Details</h4>
-          <p class="text-muted mb-0">email@example.edu | +91 99999 99999</p>
+          <p class="text-muted mb-0">cs.department@rdnational.edu | +91 22 2648 3594</p>
         </div>
 
         <div class="card mt-3 reveal">
@@ -198,6 +200,33 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
+<script>
+(function () {
+  'use strict'
 
+  const form = document.getElementById('contactForm');
+
+  form.addEventListener('submit', function (event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    } else {
+      event.preventDefault();
+
+      const status = document.getElementById("formStatus");
+      status.innerHTML = `
+        <div class="alert alert-success py-2 mb-0">
+          Message sent successfully. Our team will respond shortly.
+        </div>
+      `;
+
+      form.reset();
+      form.classList.remove('was-validated');
+    }
+
+    form.classList.add('was-validated');
+  }, false);
+})();
+</script>
 </body>
 </html>

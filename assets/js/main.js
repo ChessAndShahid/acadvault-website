@@ -125,35 +125,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ======================================================
-     6) NUMBER COUNTERS (IntersectionObserver)
-  ====================================================== */
-  function runCounterOn(el) {
-    const target = Number(el.getAttribute("data-target") || "0");
-    const suffix = el.getAttribute("data-suffix") || "";
-    const duration = 1400;
+ /* ======================================================
+   6) NUMBER COUNTERS (Simple smooth trigger)
+====================================================== */
 
-    if (target <= 0) {
-      el.textContent = "0" + suffix;
-      return;
+function runCounterOn(el, customTarget = null) {
+  const target = customTarget !== null
+    ? customTarget
+    : Number(el.getAttribute("data-target") || "0");
+
+  const suffix = el.getAttribute("data-suffix") || "";
+  const duration = 2000;
+
+  let startTime = null;
+
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const value = Math.floor(progress * target);
+
+    el.textContent = value + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      el.textContent = target + suffix;
     }
-
-    let start = 0;
-    const stepTime = Math.max(20, Math.floor(duration / target));
-    const inc = Math.max(1, Math.ceil(target / (duration / stepTime)));
-
-    const timer = setInterval(() => {
-      start += inc;
-      if (start >= target) {
-        el.textContent = target + suffix;
-        clearInterval(timer);
-      } else {
-        el.textContent = start + suffix;
-      }
-    }, stepTime);
   }
 
-  const statEls = Array.from(document.querySelectorAll(".stat-num"));
+  requestAnimationFrame(animate);
+}
+
+// Trigger after slight delay
+setTimeout(() => {
+  document.querySelectorAll(".stat-num:not(#certCount)")
+    .forEach(el => runCounterOn(el));
+}, 400);
+
+  const statEls = Array.from(
+  document.querySelectorAll(".stat-num:not(#certCount)")
+);
   if (statEls.length) {
     const seen = new WeakSet();
     const io = new IntersectionObserver(
@@ -310,3 +321,63 @@ document.addEventListener("DOMContentLoaded", () => {
     console.warn("Faculty filter error", e);
   }
 })();
+
+/* ======================================================
+   GALLERY LIGHTBOX (SAFE VERSION)
+====================================================== */
+(function () {
+  const thumbs = document.querySelectorAll(".gallery-thumb");
+  if (!thumbs.length) return; // Exit if not gallery page
+
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const closeBtn = document.querySelector(".lightbox-close");
+  const prevBtn = document.querySelector(".lightbox-prev");
+  const nextBtn = document.querySelector(".lightbox-next");
+
+  if (!lightbox || !lightboxImage) return;
+
+  let currentIndex = 0;
+  const images = Array.from(thumbs).map(btn =>
+    btn.querySelector("img").src
+  );
+
+  function openLightbox() {
+    lightboxImage.src = images[currentIndex];
+    lightbox.classList.remove("d-none");
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add("d-none");
+  }
+
+  function showNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    openLightbox();
+  }
+
+  function showPrev() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    openLightbox();
+  }
+
+  thumbs.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      currentIndex = index;
+      openLightbox();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+  if (nextBtn) nextBtn.addEventListener("click", showNext);
+  if (prevBtn) prevBtn.addEventListener("click", showPrev);
+
+  document.addEventListener("keydown", (e) => {
+    if (!lightbox.classList.contains("d-none")) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") showNext();
+      if (e.key === "ArrowLeft") showPrev();
+    }
+  });
+})();
+

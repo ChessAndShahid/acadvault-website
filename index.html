@@ -40,9 +40,10 @@
       <div class="collapse navbar-collapse" id="navMain">
         <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="verify.html">Verify</a></li>
+          
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="verify.html">Verify</a></li>
           <li class="nav-item"><a class="nav-link" href="faculty.html">Faculty</a></li>
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -150,8 +151,8 @@
       <div class="row g-3">
         <div class="col-6 col-md-3">
           <div class="stat-card p-3">
-            <div class="stat-num" data-target="10000">0</div>
-            <div class="stat-label muted">Certificates</div>
+            <div class="stat-num" id="certCount" data-target="0">0</div>
+<div class="stat-label muted">Certificates Issued</div>
           </div>
         </div>
         <div class="col-6 col-md-3">
@@ -204,7 +205,7 @@
 
 
 <!-- LIVE CERTIFICATES -->
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" id="adminCertificatesSection">
   <div class="container container-sm">
     <h2 class="text-center mb-4">Live Certificates</h2>
     <div id="certificatesContainer" class="row g-4">
@@ -323,6 +324,9 @@ const loginBtn = document.getElementById("loginBtn");
 const form = document.getElementById("certificateForm");
 const formSection = form.closest("section");
 
+// 🔥 ADD THIS HERE
+const certSection = document.getElementById("adminCertificatesSection");
+
 loginBtn.style.visibility = "hidden";   // 👈 ADD THIS LINE
 formSection.style.display = "none";
 
@@ -368,14 +372,20 @@ loginForm.addEventListener("submit", async (e) => {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    formSection.style.display = "block";
-    loginBtn.textContent = "Logout";
-  } else {
-    formSection.style.display = "none";
-    loginBtn.textContent = "Login";
-  }
+  formSection.style.display = "block";
+  certSection.style.display = "block";
+  loginBtn.textContent = "Logout";
+} else {
+  formSection.style.display = "none";
+  certSection.style.display = "none";
+  loginBtn.textContent = "Login";
+}
 
-  fetchCertificates(); // 🔥 Force re-render
+  if (user) {
+  fetchCertificates();
+} else {
+  container.innerHTML = "";
+}// 🔥 Force re-render
   loginBtn.style.visibility = "visible"; // 👈 ADD THIS LINE
 });
 
@@ -451,11 +461,11 @@ onAuthStateChanged(auth, (user) => {
             <canvas id="qr-${docItem.id}" class="mt-2"></canvas>
 
             ${
-              auth.currentUser
-                ? `<button class="btn btn-warning btn-sm mt-2 revoke-btn" data-id="${docItem.id}">
-  Revoke
-</button>`
-                : ""
+              auth.currentUser && data.status === "valid"
+  ? `<button class="btn btn-warning btn-sm mt-2 revoke-btn" data-id="${docItem.id}">
+       Revoke
+     </button>`
+  : ""
             }
           </div>
         </div>
@@ -470,6 +480,38 @@ onAuthStateChanged(auth, (user) => {
     }
   });
 }
+
+// 🔥 LIVE CERTIFICATE COUNTER
+async function updateCertificateCount() {
+  const snapshot = await getDocs(collection(db, "certificates"));
+  const count = snapshot.size;
+
+  const countElement = document.getElementById("certCount");
+  if (!countElement) return;
+
+  const duration = 500;
+  let startTime = null;
+
+  function animate(timestamp) {
+    if (!startTime) startTime = timestamp;
+
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const value = Math.floor(progress * count);
+
+    countElement.textContent = value;
+
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      countElement.textContent = count;
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+// Call it once
+updateCertificateCount();
 container.addEventListener("click", async (e) => {
   if (e.target.classList.contains("revoke-btn")) {
     const id = e.target.getAttribute("data-id");
@@ -480,12 +522,13 @@ container.addEventListener("click", async (e) => {
       });
 
       fetchCertificates();
+      updateCertificateCount();
     }
   }
 });
   
 
-  fetchCertificates();
+ 
 </script>
 
 
