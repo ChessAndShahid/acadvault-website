@@ -187,6 +187,10 @@
       </div>
 
       <div class="col-md-4">
+  <input type="email" id="studentEmail" class="form-control" placeholder="Student Email" required>
+</div>
+
+      <div class="col-md-4">
         <input type="text" id="course" class="form-control" placeholder="Course" required>
       </div>
 
@@ -293,18 +297,21 @@ import {
   collection, 
   addDoc, 
   getDocs,
+  getDoc,
   deleteDoc,
   doc,
   serverTimestamp,
   updateDoc
-} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+}  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
 import {
   getAuth,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-}  from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+  setPersistence,
+  browserSessionPersistence
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCPhxMv51PyNsOwImpmz5H0CFeoNHfFoYY",
@@ -316,8 +323,14 @@ import {
   };
 
   const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Force logout when page refreshes
+window.addEventListener("load", async () => {
+  await signOut(auth);
+});
+
   
 
 const loginBtn = document.getElementById("loginBtn");
@@ -334,6 +347,10 @@ formSection.style.display = "none";
 
 
 const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+// Auto-open login modal if redirected from other pages
+if (window.location.hash === "#login") {
+  loginModal.show();
+}
 const loginForm = document.getElementById("loginForm");
 
 loginBtn.addEventListener("click", async () => {
@@ -353,15 +370,26 @@ loginForm.addEventListener("submit", async (e) => {
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
-  if (email !== "admin@acadvault.com") {
-    alert("Access denied. Only authorized admin allowed.");
-    return;
-  }
 
   try {
     // 🔐 Set persistence BEFORE signing in
 
     await signInWithEmailAndPassword(auth, email, password);
+
+    const user = auth.currentUser;
+const userDoc = await getDoc(doc(db, "users", user.uid));
+
+if (userDoc.exists()) {
+  const role = userDoc.data().role;
+
+  if (role === "admin") {
+    window.location.href = "index.html";
+  } else if (role === "student") {
+    window.location.href = "student.html";
+  }
+} else {
+  alert("No role assigned to this user.");
+}
 
     loginModal.hide();
     loginForm.reset();
@@ -370,23 +398,32 @@ loginForm.addEventListener("submit", async (e) => {
   }
 });
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
+onAuthStateChanged(auth, async (user) => {
+
+  if (!user) {
+    formSection.style.display = "none";
+    certSection.style.display = "none";
+    loginBtn.textContent = "Login";
+    container.innerHTML = "";
+    loginBtn.style.visibility = "visible";
+    return;
+  }
+
+  // 🔐 Check role
+  const userDoc = await getDoc(doc(db, "users", user.uid));
+
+  if (!userDoc.exists() || userDoc.data().role !== "admin") {
+    // If not admin → redirect away
+    window.location.href = "student.html";
+    return;
+  }
+
+  // If admin
   formSection.style.display = "block";
   certSection.style.display = "block";
   loginBtn.textContent = "Logout";
-} else {
-  formSection.style.display = "none";
-  certSection.style.display = "none";
-  loginBtn.textContent = "Login";
-}
-
-  if (user) {
   fetchCertificates();
-} else {
-  container.innerHTML = "";
-}// 🔥 Force re-render
-  loginBtn.style.visibility = "visible"; // 👈 ADD THIS LINE
+  loginBtn.style.visibility = "visible";
 });
 
   const container = document.getElementById("certificatesContainer");
@@ -397,17 +434,18 @@ onAuthStateChanged(auth, (user) => {
     e.preventDefault();
 
     const studentName = document.getElementById("studentName").value;
+    const studentEmail = document.getElementById("studentEmail").value;
     const course = document.getElementById("course").value;
     const year = document.getElementById("year").value;
 
-    const docRef = await addDoc(collection(db, "certificates"), {
+   const docRef = await addDoc(collection(db, "certificates"), {
   studentName,
+  studentEmail,
   course,
   year,
   status: "valid",
   issuedAt: serverTimestamp()
 });
-
     alert("Certificate Issued!\nCertificate ID: " + docRef.id);
 
     form.reset();
@@ -417,9 +455,12 @@ onAuthStateChanged(auth, (user) => {
 
   // FETCH + DISPLAY
  async function fetchCertificates() {
-  container.innerHTML = "";
+
+  container.innerHTML = "Loading certificates...";
 
   const querySnapshot = await getDocs(collection(db, "certificates"));
+
+  container.innerHTML = "";
 
   querySnapshot.forEach((docItem) => {
   const data = docItem.data();
@@ -455,18 +496,25 @@ onAuthStateChanged(auth, (user) => {
   }
 </p>
             <p class="small text-muted">
-              <strong>ID:</strong> ${docItem.id}
-            </p>
+<strong>ID:</strong> ${docItem.id}
+<button class="btn btn-outline-secondary btn-sm copy-btn" data-id="${docItem.id}">
+Copy
+</button>
+</p>
 
             <canvas id="qr-${docItem.id}" class="mt-2"></canvas>
 
             ${
-              auth.currentUser && data.status === "valid"
-  ? `<button class="btn btn-warning btn-sm mt-2 revoke-btn" data-id="${docItem.id}">
-       Revoke
-     </button>`
-  : ""
-            }
+  auth.currentUser
+    ? data.status === "valid"
+      ? `<button class="btn btn-warning btn-sm mt-2 revoke-btn" data-id="${docItem.id}">
+           Revoke
+         </button>`
+      : `<button class="btn btn-success btn-sm mt-2 restore-btn" data-id="${docItem.id}">
+           Restore
+         </button>`
+    : ""
+}
           </div>
         </div>
       </div>
@@ -513,6 +561,15 @@ async function updateCertificateCount() {
 // Call it once
 updateCertificateCount();
 container.addEventListener("click", async (e) => {
+
+  // COPY CERTIFICATE ID
+  if (e.target.classList.contains("copy-btn")) {
+    const id = e.target.getAttribute("data-id");
+    navigator.clipboard.writeText(id);
+    alert("Certificate ID copied!");
+  }
+
+  // REVOKE CERTIFICATE
   if (e.target.classList.contains("revoke-btn")) {
     const id = e.target.getAttribute("data-id");
 
@@ -525,12 +582,14 @@ container.addEventListener("click", async (e) => {
       updateCertificateCount();
     }
   }
+
 });
   
 
  
 </script>
-
+<script src="assets/js/main.js" defer></script>
+<script type="module" src="assets/js/auth.js"></script>
 
 </body>
 </html>
